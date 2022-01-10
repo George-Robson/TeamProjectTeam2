@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     void Update() {
-        Timer += Time.deltaTime * CameraBobbingSpeed;
+        Timer += Time.fixedDeltaTime * CameraBobbingSpeed;
 
         Body.MovePosition(transform.position + (transform.forward * Input.GetAxis("Vertical") * MoveSpeed) + (transform.right * Input.GetAxis("Horizontal") * MoveSpeed));
 
@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour {
             Cam.transform.position = new Vector3(Cam.transform.position.x, DefaultPosY + Mathf.Sin(Timer) * CameraBobbingAmount, Cam.transform.position.z);
         } else {
             Timer = 0F;
-            Cam.transform.position = new Vector3(Cam.transform.position.x, DefaultPosY, Cam.transform.position.z);
+            Cam.transform.position = new Vector3(Cam.transform.position.x, Mathf.Lerp(Cam.transform.position.y, DefaultPosY, Time.fixedDeltaTime), Cam.transform.position.z);
         }
 
         //Camera Vertical Rotation
