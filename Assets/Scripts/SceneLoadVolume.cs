@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SceneLoadVolume : MonoBehaviour
 {
-    public List<string> scenesToLoad = new List<string>();
-    public List<string> scenesToUnload = new List<string>();
+    public string sceneToLoad;
     public GameObject playerTeleportPosition;
+    private SceneController sceneController = new SceneController();
 
     void OnDrawGizmos() {
         Gizmos.color = Color.red;
@@ -19,6 +19,7 @@ public class SceneLoadVolume : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         Debug.Log("Collision with " + other.transform.name);
         if (other.tag == "Player") {
+            sceneController.LoadScene(sceneToLoad);
             other.transform.SetPositionAndRotation(playerTeleportPosition.transform.position, playerTeleportPosition.transform.rotation);
         }
     }
