@@ -1,18 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SceneLoadVolume : MonoBehaviour
 {
     public string sceneToLoad;
     public GameObject playerTeleportPosition;
     private SceneController sceneController = new SceneController();
-    private Image blackScreen;
-    public float fadeSpeed = 0.2f;
+    private Animator blackScreen;
+    public float fadeSpeed = 0.0001f;
 
     private void Start() {
-        blackScreen = GameObject.Find("Black Screen").GetComponent<Image>();
+        blackScreen = GameObject.Find("Black Screen").GetComponent<Animator>();
     }
 
     void OnDrawGizmos() {
@@ -25,23 +25,36 @@ public class SceneLoadVolume : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         Debug.Log("Collision with " + other.transform.name);
-        if (other.tag == "Player") {
-            StartCoroutine(fadeScreenIn());
+        if (other.tag == "Player")
+        {
+            blackScreen.Play("FadeScreenOut");
             sceneController.LoadScene(sceneToLoad);
             other.transform.SetPositionAndRotation(playerTeleportPosition.transform.position, playerTeleportPosition.transform.rotation);
         }
     }
 
     //TODO: 
-    private IEnumerator fadeScreenIn() {
-        while (blackScreen.color.a < 1) {
-            Debug.Log("hello");
-            Color objectColor = blackScreen.color;
-            float fadeAmount = blackScreen.color.a + (fadeSpeed * Time.fixedDeltaTime);
-
-            objectColor = new Color(blackScreen.color.r, blackScreen.color.g, blackScreen.color.b, fadeAmount);
-            blackScreen.color = objectColor;
-            yield return new WaitForSeconds(fadeSpeed);
-        }
-    }
+    // private IEnumerator fadeScreenOut() {
+    //     while (blackScreen.color.a < 1) {
+    //         Color objectColor = blackScreen.color;
+    //         float fadeAmount = blackScreen.color.a + (fadeSpeed * Time.fixedDeltaTime);
+    //
+    //         objectColor = new Color(blackScreen.color.r, blackScreen.color.g, blackScreen.color.b, fadeAmount);
+    //         blackScreen.color = objectColor;
+    //         yield return null;
+    //     }
+    //     bFadeScreenOut = false;
+    // }
+    //
+    // private IEnumerator fadeScreenIn() {
+    //     while (blackScreen.color.a > 0) {
+    //         Color objectColor = blackScreen.color;
+    //         float fadeAmount = blackScreen.color.a - (fadeSpeed * Time.fixedDeltaTime);
+    //
+    //         objectColor = new Color(blackScreen.color.r, blackScreen.color.g, blackScreen.color.b, fadeAmount);
+    //         blackScreen.color = objectColor;
+    //         yield return null;
+    //     }
+    //     bFadeScreenIn = false;
+    // }
 }

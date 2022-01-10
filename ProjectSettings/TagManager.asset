@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Scene Load Volume
   - Enemy
-  - Interactible
+  - Interactable
   layers:
   - Default
   - TransparentFX
