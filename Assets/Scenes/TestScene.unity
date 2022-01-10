@@ -579,6 +579,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3047747425053346920, guid: 3ecf0a39ba753b9438382422f033ae60, type: 3}
+      propertyPath: fadeTime
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3047747425053346920, guid: 3ecf0a39ba753b9438382422f033ae60, type: 3}
+      propertyPath: fadeSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3047747425053346920, guid: 3ecf0a39ba753b9438382422f033ae60, type: 3}
       propertyPath: sceneToLoad
       value: Cube
       objectReference: {fileID: 0}
