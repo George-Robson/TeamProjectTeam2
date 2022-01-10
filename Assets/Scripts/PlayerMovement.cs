@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     void Update() {
-        Timer += Time.deltaTime * CameraBobbingSpeed;
+        Timer += Time.fixedDeltaTime * CameraBobbingSpeed;
 
         Body.MovePosition(transform.position + (transform.forward * Input.GetAxis("Vertical") * MoveSpeed) + (transform.right * Input.GetAxis("Horizontal") * MoveSpeed));
 
