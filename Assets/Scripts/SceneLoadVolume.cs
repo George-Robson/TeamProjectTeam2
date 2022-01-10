@@ -7,7 +7,7 @@ public class SceneLoadVolume : MonoBehaviour
 {
     public string sceneToLoad;
     public GameObject playerTeleportPosition;
-    private SceneController sceneController = new SceneController();
+    private readonly SceneController sceneController = new SceneController();
     private Animator blackScreen;
     public float fadeSpeed = 0.0001f;
 
@@ -32,29 +32,4 @@ public class SceneLoadVolume : MonoBehaviour
             other.transform.SetPositionAndRotation(playerTeleportPosition.transform.position, playerTeleportPosition.transform.rotation);
         }
     }
-
-    //TODO: 
-    // private IEnumerator fadeScreenOut() {
-    //     while (blackScreen.color.a < 1) {
-    //         Color objectColor = blackScreen.color;
-    //         float fadeAmount = blackScreen.color.a + (fadeSpeed * Time.fixedDeltaTime);
-    //
-    //         objectColor = new Color(blackScreen.color.r, blackScreen.color.g, blackScreen.color.b, fadeAmount);
-    //         blackScreen.color = objectColor;
-    //         yield return null;
-    //     }
-    //     bFadeScreenOut = false;
-    // }
-    //
-    // private IEnumerator fadeScreenIn() {
-    //     while (blackScreen.color.a > 0) {
-    //         Color objectColor = blackScreen.color;
-    //         float fadeAmount = blackScreen.color.a - (fadeSpeed * Time.fixedDeltaTime);
-    //
-    //         objectColor = new Color(blackScreen.color.r, blackScreen.color.g, blackScreen.color.b, fadeAmount);
-    //         blackScreen.color = objectColor;
-    //         yield return null;
-    //     }
-    //     bFadeScreenIn = false;
-    // }
 }
