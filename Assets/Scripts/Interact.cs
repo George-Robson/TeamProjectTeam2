@@ -10,6 +10,7 @@ public class Interact : MonoBehaviour {
         
         if (Physics.Raycast(ray, out hit, raycastDistance)) {
             if(hit.collider.tag == "Enemy"){
+                Debug.Log("Hit " + hit.transform.name);
                 //TODO - add something
             }
         }
