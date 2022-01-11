@@ -18,21 +18,21 @@ public class PlayerMovement : MonoBehaviour {
 
     void Start(){
         Body = GetComponent<Rigidbody>();
-        DefaultPosY = Cam.transform.localPosition.y;
+        DefaultPosY = Cam.transform.position.y;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
     void FixedUpdate() {
-        if( Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Picked ) return;
-        if( Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Picking ) return;
+        if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Picked) return;
+        if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Picking ) return;
 
         Body.MovePosition(transform.position + (transform.forward * Input.GetAxis("Vertical") * MoveSpeed) + (transform.right * Input.GetAxis("Horizontal") * MoveSpeed));
     }
 
     void Update(){
-        if( Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Picked ) return;
-        if( Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Picking ) return;
+        if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Picked ) return;
+        if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Picking ) return;
 
         Timer += Time.fixedDeltaTime * CameraBobbingSpeed;
 
@@ -46,10 +46,10 @@ public class PlayerMovement : MonoBehaviour {
 
         //Camera Head Bobbing
         if(Input.GetButton("Horizontal") || Input.GetButton("Vertical")){
-            Cam.transform.localPosition = new Vector3(Cam.transform.localPosition.x, DefaultPosY + Mathf.Sin(Timer) * CameraBobbingAmount, Cam.transform.localPosition.z);
+            Cam.transform.position = new Vector3(Cam.transform.position.x, DefaultPosY + Mathf.Sin(Timer) * CameraBobbingAmount, Cam.transform.position.z);
         } else {
             Timer = 0F;
-            Cam.transform.localPosition = new Vector3(Cam.transform.localPosition.x, Mathf.Lerp(Cam.transform.localPosition.y, DefaultPosY, Time.fixedDeltaTime), Cam.transform.localPosition.z);
+            Cam.transform.position = new Vector3(Cam.transform.position.x, Mathf.Lerp(Cam.transform.position.y, DefaultPosY, Time.fixedDeltaTime), Cam.transform.position.z);
         }
     }
 }
