@@ -19,12 +19,27 @@ public class PlayerMovement : MonoBehaviour {
     void Start(){
         Body = GetComponent<Rigidbody>();
         DefaultPosY = Cam.transform.position.y;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
-    void Update() {
-        Timer += Time.fixedDeltaTime * CameraBobbingSpeed;
+    void FixedUpdate() {
+        if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Picked) return;
+        if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Picking ) return;
 
         Body.MovePosition(transform.position + (transform.forward * Input.GetAxis("Vertical") * MoveSpeed) + (transform.right * Input.GetAxis("Horizontal") * MoveSpeed));
+    }
+
+    void Update(){
+        if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Picked ) return;
+        if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Picking ) return;
+
+        Timer += Time.fixedDeltaTime * CameraBobbingSpeed;
+
+        //Camera Vertical Rotation
+        rotationY += Input.GetAxis("Mouse Y") * MouseSensitivity;
+        rotationY = Mathf.Clamp(rotationY, MinimumY, MaximumY);
+        Cam.transform.localEulerAngles = new Vector3(-rotationY, 0, 0);
 
         //Body Horizontal Rotation
         Body.MoveRotation(Body.rotation * Quaternion.Euler(new Vector3(0, Input.GetAxis("Mouse X") * MouseSensitivity, 0)));
@@ -36,10 +51,5 @@ public class PlayerMovement : MonoBehaviour {
             Timer = 0F;
             Cam.transform.position = new Vector3(Cam.transform.position.x, Mathf.Lerp(Cam.transform.position.y, DefaultPosY, Time.fixedDeltaTime), Cam.transform.position.z);
         }
-
-        //Camera Vertical Rotation
-        rotationY += Input.GetAxis("Mouse Y") * MouseSensitivity;
-        rotationY = Mathf.Clamp(rotationY, MinimumY, MaximumY);
-        Cam.transform.localEulerAngles = new Vector3(-rotationY, 0, 0);
     }
 }

@@ -16,8 +16,8 @@ GameObject:
   - component: {fileID: 1265539356773562953}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_TagString: Player
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -117,8 +117,8 @@ MonoBehaviour:
   MinimumY: -60
   MaximumY: 60
   MoveSpeed: 0.2
-  CameraBobbingAmount: 0.3
-  CameraBobbingSpeed: 10
+  CameraBobbingAmount: 0.2
+  CameraBobbingSpeed: 1
 --- !u!54 &1265539356773562953
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -232,3 +232,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raycastDistance: 4
+  inspectDistance: 1
+  pickupDamping: 2
+  objectPickupState: 3
