@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Scene Load Volume
   - Enemy
-  - Interactible
+  - Interactable
   - Interactible2
   layers:
   - Default
