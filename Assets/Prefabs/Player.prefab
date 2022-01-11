@@ -51,7 +51,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1265539356773562947}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -114,11 +114,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Cam: {fileID: 1265539357974528764}
   MouseSensitivity: 3
-  MinimumY: -60
-  MaximumY: 60
-  MoveSpeed: 0.2
+  MinimumY: -75
+  MaximumY: 70
+  MoveSpeed: 0.1
   CameraBobbingAmount: 0.1
-  CameraBobbingSpeed: 10
+  CameraBobbingSpeed: 7
 --- !u!54 &1265539356773562953
 Rigidbody:
   m_ObjectHideFlags: 0
