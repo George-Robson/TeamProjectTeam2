@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -668,18 +668,62 @@ PrefabInstance:
     - target: {fileID: 305842838791075040, guid: 65655e659dd5c4a488707b090ea0d811, type: 3}
       propertyPath: audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 779b380fb3512304aa081e97536054f0, type: 3}
+      objectReference: {fileID: 8300000, guid: f2b9c37acf16aed41bcdc007d029c18e, type: 3}
     - target: {fileID: 305842838791075040, guid: 65655e659dd5c4a488707b090ea0d811, type: 3}
       propertyPath: condition
       value: hasKey
       objectReference: {fileID: 0}
     - target: {fileID: 305842838791075040, guid: 65655e659dd5c4a488707b090ea0d811, type: 3}
+      propertyPath: cC1Duration
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 305842838791075040, guid: 65655e659dd5c4a488707b090ea0d811, type: 3}
+      propertyPath: cC2Duration
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 305842838791075040, guid: 65655e659dd5c4a488707b090ea0d811, type: 3}
+      propertyPath: cC3Duration
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 305842838791075040, guid: 65655e659dd5c4a488707b090ea0d811, type: 3}
+      propertyPath: cC4Duration
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 305842838791075040, guid: 65655e659dd5c4a488707b090ea0d811, type: 3}
+      propertyPath: cC5Duration
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 305842838791075040, guid: 65655e659dd5c4a488707b090ea0d811, type: 3}
+      propertyPath: closedCaption
+      value: 'Test Test Test Test Test Test Test Test Test Test Test Test Test Test '
+      objectReference: {fileID: 0}
+    - target: {fileID: 305842838791075040, guid: 65655e659dd5c4a488707b090ea0d811, type: 3}
       propertyPath: onlyPlaysOnce
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 305842838791075040, guid: 65655e659dd5c4a488707b090ea0d811, type: 3}
+      propertyPath: closedCaption1
+      value: 'Phew, looks like the self-ward worked. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 305842838791075040, guid: 65655e659dd5c4a488707b090ea0d811, type: 3}
+      propertyPath: closedCaption2
+      value: Ugh, look at this mess.
+      objectReference: {fileID: 0}
+    - target: {fileID: 305842838791075040, guid: 65655e659dd5c4a488707b090ea0d811, type: 3}
+      propertyPath: closedCaption3
+      value: How did I let this get so out of control?
+      objectReference: {fileID: 0}
+    - target: {fileID: 305842838791075040, guid: 65655e659dd5c4a488707b090ea0d811, type: 3}
+      propertyPath: closedCaption4
+      value: "The emotional anchors should\u2019ve contained it."
+      objectReference: {fileID: 0}
+    - target: {fileID: 305842838791075040, guid: 65655e659dd5c4a488707b090ea0d811, type: 3}
+      propertyPath: closedCaption5
+      value: ' I should check them.'
       objectReference: {fileID: 0}
     - target: {fileID: 305842838791075040, guid: 65655e659dd5c4a488707b090ea0d811, type: 3}
       propertyPath: requiresCondition
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 305842838791075042, guid: 65655e659dd5c4a488707b090ea0d811, type: 3}
       propertyPath: m_Name
