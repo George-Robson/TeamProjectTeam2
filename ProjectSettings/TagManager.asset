@@ -8,11 +8,12 @@ TagManager:
   - Enemy
   - Interactable
   - Interactible2
+  - Interactible
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - No Collision
   - Water
   - UI
   - Post-Processing

@@ -114,8 +114,9 @@ public class Interact : MonoBehaviour {
             pickedObjectL.transform.Rotate(new Vector3(-rotationY, -rotationX, 0), Space.Self);
           }
 
-          if (Vector3.Dot(pickedObjectL.transform.up, pickedObjectR.transform.up) < -alignment) {
+          if (Vector3.Dot(pickedObjectL.transform.forward, pickedObjectR.transform.forward) < -alignment) {
 						//TODO if theyre correctly positioned
+            print("test");
 						objectPickupState = PickupState.Combining;
 					}
 
