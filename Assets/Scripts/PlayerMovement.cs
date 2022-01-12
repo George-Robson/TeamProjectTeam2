@@ -8,9 +8,10 @@ public class PlayerMovement : MonoBehaviour {
     public float MinimumY = -60F;
     public float MaximumY = 60F;
     public float MoveSpeed = 0.2F;
-    public float CameraBobbingWalking = 1;
-    public float CameraBobbingStanding = 1;
-    public float CameraBobbingSpeed = 5;
+    public float BobbingWalkingAmount = 1;
+    public float BobbingWalkingSpeed = 1;
+    public float BobbingStandingAmount = 1;
+    public float BobbingStandingSpeed = 1;
     
     float rotationY = 0F;
     float Timer = 0F;
@@ -37,7 +38,6 @@ public class PlayerMovement : MonoBehaviour {
         if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Picking ) return;
         if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Combining ) return;
 
-        Timer += Time.fixedDeltaTime * CameraBobbingSpeed;
 
         //Camera Vertical Rotation
         rotationY += Input.GetAxis("Mouse Y") * MouseSensitivity;
@@ -49,9 +49,11 @@ public class PlayerMovement : MonoBehaviour {
 
         //Camera Head Bobbing
         if(Input.GetButton("Horizontal") || Input.GetButton("Vertical")){
-            Cam.transform.position = new Vector3(Cam.transform.position.x, transform.position.y + 1 + Mathf.Sin(Timer) * CameraBobbingWalking, Cam.transform.position.z);
+            Timer += Time.fixedDeltaTime * BobbingWalkingSpeed;
+            Cam.transform.position = new Vector3(Cam.transform.position.x, transform.position.y + 1 + Mathf.Sin(Timer) * BobbingWalkingAmount, Cam.transform.position.z);
         } else {
-            Cam.transform.position = new Vector3(Cam.transform.position.x, transform.position.y + 1 + Mathf.Sin(Timer) * CameraBobbingStanding, Cam.transform.position.z);
+            Timer += Time.fixedDeltaTime * BobbingStandingSpeed;
+            Cam.transform.position = new Vector3(Cam.transform.position.x, transform.position.y + 1 + Mathf.Sin(Timer) * BobbingStandingAmount, Cam.transform.position.z);
         }
     }
 }
