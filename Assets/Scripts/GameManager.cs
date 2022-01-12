@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,10 +6,16 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public List<string> conditions = new List<string>();
-    public List<GameState> gameStateList = new List<GameState>()
+    public List<GameState> gameStateList = new List<GameState>();
+
+    private void Start()
     {
-        
-    };
+        gameStateList.Clear();
+        foreach (string c in conditions)
+        {
+            AddGameState(c);
+        }
+    }
 
     public bool FindState(string state) {
         for (int i = 0; i < gameStateList.Count; i++)
@@ -33,11 +40,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SetGameState(string condition, bool b) {
-        for (int i = 0; i < gameStateList.Count; i++)
+    public void SetGameState(string condition, bool boolean)
+    {
+        foreach (var state in gameStateList)
         {
-            if (gameStateList[i].gameStateString == condition)
-                gameStateList[i].gameStateBool = b;
+            if (state.gameStateString == condition)
+                state.gameStateBool = boolean;
             return;
         }
     }

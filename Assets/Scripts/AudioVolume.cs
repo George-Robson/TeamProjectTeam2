@@ -8,8 +8,16 @@ public class AudioVolume : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip audioClip;
     [SerializeField, Range(0f, 1f)] private float volume = 1;
-    void Start() {
+    public bool requiresCondition;
+    public string condition;
+    public bool onlyPlaysOnce;
+    private bool hasPlayed = false;
+    private GameManager gameManager;
+    
+    void Start()
+    {
         audioSource = GameObject.Find("Player").transform.GetChild(0).GetComponent<Camera>().GetComponent<AudioSource>();
+        gameManager = GameObject.Find("Game Manager").transform.GetComponent<GameManager>();
     } 
     
     void OnDrawGizmos() {
@@ -17,10 +25,16 @@ public class AudioVolume : MonoBehaviour
         Gizmos.DrawWireCube(gameObject.transform.position, GetComponent<BoxCollider>().size);
     }
     
-    private void OnTriggerEnter(Collider other) {
+    private void OnTriggerEnter(Collider other)
+    {
+        if (requiresCondition && !gameManager.FindState(condition))
+            return;
+        if (onlyPlaysOnce && hasPlayed)
+            return;
         if (other.CompareTag("Player") && audioClip != null)
         {
             audioSource.PlayOneShot(audioClip, volume);
+            hasPlayed = true;
         } else Debug.LogError("No audio clip assigned to play");
     }
 }

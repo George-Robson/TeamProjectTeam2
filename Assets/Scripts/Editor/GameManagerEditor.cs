@@ -11,8 +11,9 @@ public class GameManagerEditor : Editor
         GameManager gameManager = (GameManager) target;
 
         GUILayout.BeginVertical();
-        
-        if (GUILayout.Button("Refresh"))
+
+        #if UNITY_EDITOR
+        if (GUILayout.Button("Refresh (Do not refresh when testing in playmode)"))
         {
             gameManager.gameStateList.Clear();
             for (int i = 0; i < gameManager.conditions.Count; i++)
@@ -20,17 +21,21 @@ public class GameManagerEditor : Editor
                 gameManager.AddGameState(gameManager.conditions[i]);
             }
         }
+        #endif
         
         GUILayout.Label("Current Game States:");
-        for (int i = 0; i < gameManager.gameStateList.Count; i++)
+        foreach (var gameState in gameManager.gameStateList)
         {
             GUILayout.BeginHorizontal();
             
-            GUILayout.Label(gameManager.gameStateList[i].gameStateString);
-            GUILayout.Toggle(gameManager.gameStateList[i].gameStateBool, "");
+            GUILayout.Label(gameState.gameStateString);
+            GUILayout.Toggle(gameState.gameStateBool, "");
+            if (GUILayout.Button("Toggle"))
+            {
+                gameManager.SetGameState(gameState.gameStateString, !gameState.gameStateBool);
+            }
             
             GUILayout.EndHorizontal();
-            
         }
         base.OnInspectorGUI();
         GUILayout.EndVertical();
