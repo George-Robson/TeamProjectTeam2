@@ -5,7 +5,8 @@ public class AudioVolume : MonoBehaviour
 {
     private AudioSource audioSource;
     public AudioClip audioClip;
-    private Animator subtitleBackground;
+    private GameObject subtitleBackground;
+    private canChangeLevel canChangeLevel;
     [SerializeField, Range(0f, 1f)] private float volume = 1;
     public bool requiresCondition;
     public string condition;
@@ -27,9 +28,11 @@ public class AudioVolume : MonoBehaviour
     private float startTime = 0;
     private bool triggered = false;
 
-    void Start() {
-        subtitleBackground = GameObject.Find("UI Canvas").transform.GetChild(0).GetComponent<Animator>();
-        audioSource = GameObject.Find("Player").transform.GetChild(0).GetComponent<Camera>().GetComponent<AudioSource>();
+    void Start()
+    {
+        subtitleBackground = GameObject.Find("UI Canvas").transform.GetChild(0).gameObject;
+        canChangeLevel = GameObject.Find("Player").GetComponent<canChangeLevel>();
+        audioSource = GameObject.Find("Player").transform.GetChild(0).GetComponent<AudioSource>();
         gameManager = GameObject.Find("Game Manager").transform.GetComponent<GameManager>();
         textMeshProUGUI = GameObject.Find("UI Canvas").transform.GetChild(1).GetComponent<TextMeshProUGUI>();
     }
@@ -47,8 +50,8 @@ public class AudioVolume : MonoBehaviour
     }
 
     void ShowCC() {
-        GameObject.Find("Player").GetComponent<canChangeLevel>().setCanChangeLevel(false);
-        subtitleBackground.Play("FadeIn");
+        canChangeLevel.setCanChangeLevel(false);
+        subtitleBackground.SetActive(true);
         if (startTime < cC1Duration)
             textMeshProUGUI.text = closedCaption1;
         else if (startTime < cC1Duration + cC2Duration)
@@ -62,8 +65,8 @@ public class AudioVolume : MonoBehaviour
         else
         {
             textMeshProUGUI.text = "";
-            GameObject.Find("Player").GetComponent<canChangeLevel>().setCanChangeLevel(true);
-            subtitleBackground.Play("FadeOut");
+            canChangeLevel.setCanChangeLevel(true);
+            subtitleBackground.SetActive(false);
             return;
         }
         startTime += Time.deltaTime;

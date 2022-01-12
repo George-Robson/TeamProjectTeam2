@@ -14,7 +14,10 @@ public class Pickup : MonoBehaviour
     private bool interactable = false;
 
     private void Start() {
+        
         gameManager = GameObject.Find("Game Manager").transform.GetComponent<GameManager>();
+        if (gameManager.FindState(givesCondition))
+            Destroy(gameObject);
         cam = GameObject.Find("Player").transform.GetChild(0).GetComponent<Camera>();
         interactUI.gameObject.SetActive(false);
     }

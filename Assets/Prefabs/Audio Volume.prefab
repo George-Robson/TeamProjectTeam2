@@ -48,6 +48,18 @@ MonoBehaviour:
   volume: 1
   requiresCondition: 0
   condition: 
+  onlyPlaysOnce: 0
+  requiresCC: 1
+  cC1Duration: 1
+  cC2Duration: 0
+  cC3Duration: 0
+  cC4Duration: 0
+  cC5Duration: 0
+  closedCaption1: 
+  closedCaption2: 
+  closedCaption3: 
+  closedCaption4: 
+  closedCaption5: 
 --- !u!65 &305842838791075041
 BoxCollider:
   m_ObjectHideFlags: 0
