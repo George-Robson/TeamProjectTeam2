@@ -75,7 +75,7 @@ MonoBehaviour:
     value: 1
   temperature:
     overrideState: 1
-    value: -36.9
+    value: -4
   tint:
     overrideState: 1
     value: -3.7
@@ -87,7 +87,7 @@ MonoBehaviour:
     value: 0
   saturation:
     overrideState: 1
-    value: -65.4
+    value: -35
   brightness:
     overrideState: 1
     value: -15
