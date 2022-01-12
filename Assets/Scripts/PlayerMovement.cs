@@ -8,7 +8,8 @@ public class PlayerMovement : MonoBehaviour {
     public float MinimumY = -60F;
     public float MaximumY = 60F;
     public float MoveSpeed = 0.2F;
-    public float CameraBobbingAmount = 1;
+    public float CameraBobbingWalking = 1;
+    public float CameraBobbingStanding = 1;
     public float CameraBobbingSpeed = 5;
     
     float rotationY = 0F;
@@ -48,10 +49,9 @@ public class PlayerMovement : MonoBehaviour {
 
         //Camera Head Bobbing
         if(Input.GetButton("Horizontal") || Input.GetButton("Vertical")){
-            Cam.transform.position = new Vector3(Cam.transform.position.x, transform.position.y + 1 + Mathf.Sin(Timer) * CameraBobbingAmount, Cam.transform.position.z);
+            Cam.transform.position = new Vector3(Cam.transform.position.x, transform.position.y + 1 + Mathf.Sin(Timer) * CameraBobbingWalking, Cam.transform.position.z);
         } else {
-            Timer = 0F;
-            Cam.transform.position = new Vector3(Cam.transform.position.x, Mathf.Lerp(Cam.transform.position.y, transform.position.y + 1, Time.fixedDeltaTime), Cam.transform.position.z);
+            Cam.transform.position = new Vector3(Cam.transform.position.x, transform.position.y + 1 + Mathf.Sin(Timer) * CameraBobbingStanding, Cam.transform.position.z);
         }
     }
 }

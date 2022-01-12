@@ -891,6 +891,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1265539356773562952, guid: 55cd581bbea946f4587a94f65bb933f5, type: 3}
+      propertyPath: CameraBobbingSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1265539356773562952, guid: 55cd581bbea946f4587a94f65bb933f5, type: 3}
+      propertyPath: CameraBobbingAmount
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1265539356773562952, guid: 55cd581bbea946f4587a94f65bb933f5, type: 3}
+      propertyPath: CameraBobbingWalking
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1265539356773562952, guid: 55cd581bbea946f4587a94f65bb933f5, type: 3}
+      propertyPath: CameraBobbingStanding
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1265539356773562959, guid: 55cd581bbea946f4587a94f65bb933f5, type: 3}
       propertyPath: m_RootOrder
       value: 1
