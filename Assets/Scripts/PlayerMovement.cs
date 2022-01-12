@@ -31,6 +31,15 @@ public class PlayerMovement : MonoBehaviour {
         if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Combining ) return;
 
         Body.MovePosition(transform.position + (transform.forward * Input.GetAxis("Vertical") * MoveSpeed) + (transform.right * Input.GetAxis("Horizontal") * MoveSpeed));
+        
+        //Camera Head Bobbing
+        if(Input.GetButton("Horizontal") || Input.GetButton("Vertical")){
+            Timer += Time.fixedDeltaTime * BobbingWalkingSpeed;
+            Cam.transform.position = new Vector3(Cam.transform.position.x, transform.position.y + 1 + Mathf.Sin(Timer) * BobbingWalkingAmount, Cam.transform.position.z);
+        } else {
+            Timer += Time.fixedDeltaTime * BobbingStandingSpeed;
+            Cam.transform.position = new Vector3(Cam.transform.position.x, transform.position.y + 1 + Mathf.Sin(Timer) * BobbingStandingAmount, Cam.transform.position.z);
+        }
     }
 
     void Update(){
@@ -47,13 +56,5 @@ public class PlayerMovement : MonoBehaviour {
         //Body Horizontal Rotation
         Body.MoveRotation(Body.rotation * Quaternion.Euler(new Vector3(0, Input.GetAxis("Mouse X") * MouseSensitivity, 0)));
 
-        //Camera Head Bobbing
-        if(Input.GetButton("Horizontal") || Input.GetButton("Vertical")){
-            Timer += Time.fixedDeltaTime * BobbingWalkingSpeed;
-            Cam.transform.position = new Vector3(Cam.transform.position.x, transform.position.y + 1 + Mathf.Sin(Timer) * BobbingWalkingAmount, Cam.transform.position.z);
-        } else {
-            Timer += Time.fixedDeltaTime * BobbingStandingSpeed;
-            Cam.transform.position = new Vector3(Cam.transform.position.x, transform.position.y + 1 + Mathf.Sin(Timer) * BobbingStandingAmount, Cam.transform.position.z);
-        }
     }
 }

@@ -687,6 +687,22 @@ PrefabInstance:
       propertyPath: CameraBobbingSpeed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1265539356773562952, guid: 55cd581bbea946f4587a94f65bb933f5, type: 3}
+      propertyPath: BobbingWalkingSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1265539356773562952, guid: 55cd581bbea946f4587a94f65bb933f5, type: 3}
+      propertyPath: BobbingStandingSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1265539356773562952, guid: 55cd581bbea946f4587a94f65bb933f5, type: 3}
+      propertyPath: BobbingWalkingAmount
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1265539356773562952, guid: 55cd581bbea946f4587a94f65bb933f5, type: 3}
+      propertyPath: BobbingStandingAmount
+      value: 0.03
+      objectReference: {fileID: 0}
     - target: {fileID: 1265539356773562953, guid: 55cd581bbea946f4587a94f65bb933f5, type: 3}
       propertyPath: m_Constraints
       value: 112
