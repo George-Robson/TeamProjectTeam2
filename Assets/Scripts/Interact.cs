@@ -130,7 +130,7 @@ public class Interact : MonoBehaviour
           }
 
           //TODO
-          if (Vector3.dot(pickedObjectL.transform.direction, pickedObjectR.transform.direction) > 0.9)
+          // if (Vector3.dot(pickedObjectL.transform.direction, pickedObjectR.transform.direction) > 0.9)
 
             break;
         }
