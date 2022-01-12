@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Interact : MonoBehaviour {
+  public string condition;
   public float raycastDistance = 4F;
   public float inspectDistance = 1F;
   public float pickupDamping = 2;
@@ -104,6 +105,11 @@ public class Interact : MonoBehaviour {
               pickedObjectR.rotation == originalObjectRR && pickedObjectR.position == originalObjectRP &&
               pickedObjectM.localScale == originalObjectMS) {
             objectPickupState = PickupState.Placed;
+            if(pickedObjectL.localScale == Vector3.zero){
+              //todo
+              GameManager gm = GameObject.Find("Game Manager").transform.GetComponent<GameManager>();
+              gm.SetGameState(condition, true);
+            }
           }
 
           break;
