@@ -46,10 +46,10 @@ public class PlayerMovement : MonoBehaviour {
 
         //Camera Head Bobbing
         if(Input.GetButton("Horizontal") || Input.GetButton("Vertical")){
-            Cam.transform.position = new Vector3(Cam.transform.position.x, DefaultPosY + Mathf.Sin(Timer) * CameraBobbingAmount, Cam.transform.position.z);
+            Cam.transform.position = new Vector3(Cam.transform.position.x, transform.position.y + 1 + Mathf.Sin(Timer) * CameraBobbingAmount, Cam.transform.position.z);
         } else {
             Timer = 0F;
-            Cam.transform.position = new Vector3(Cam.transform.position.x, Mathf.Lerp(Cam.transform.position.y, DefaultPosY, Time.fixedDeltaTime), Cam.transform.position.z);
+            Cam.transform.position = new Vector3(Cam.transform.position.x, Mathf.Lerp(Cam.transform.position.y, transform.position.y + 1, Time.fixedDeltaTime), Cam.transform.position.z);
         }
     }
 }
