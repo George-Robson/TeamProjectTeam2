@@ -501,6 +501,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 860687911}
+  - component: {fileID: 860687912}
   m_Layer: 0
   m_Name: Interactible
   m_TagString: Interactible
@@ -525,6 +526,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &860687912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860687910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db777078045e1f74cb21079899f7c775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  condition: test
 --- !u!1 &1131058744
 GameObject:
   m_ObjectHideFlags: 0
@@ -953,7 +967,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1728820300312058484, guid: 55cd581bbea946f4587a94f65bb933f5, type: 3}
       propertyPath: alignment
-      value: 0.98
+      value: 0.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55cd581bbea946f4587a94f65bb933f5, type: 3}

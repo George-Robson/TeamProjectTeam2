@@ -117,8 +117,10 @@ MonoBehaviour:
   MinimumY: -75
   MaximumY: 70
   MoveSpeed: 0.1
-  CameraBobbingAmount: 0.05
-  CameraBobbingSpeed: 5
+  BobbingWalkingAmount: 0.12
+  BobbingWalkingSpeed: 7
+  BobbingStandingAmount: 0.03
+  BobbingStandingSpeed: 2
 --- !u!54 &1265539356773562953
 Rigidbody:
   m_ObjectHideFlags: 0

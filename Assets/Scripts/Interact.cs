@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Interact : MonoBehaviour {
-  public string condition;
   public float raycastDistance = 4F;
   public float inspectDistance = 1F;
   public float pickupDamping = 2;
 	public float alignment = 0.95F;
 
   [HideInInspector]
-  public enum PickupState { Picked, Picking, Placing, Placed, Combining }
+  public enum PickupState { Picked, Picking, Placing, Placed, Combining, Observing }
   [HideInInspector]
   public PickupState objectPickupState = PickupState.Placed;
 
@@ -20,6 +19,8 @@ public class Interact : MonoBehaviour {
   Vector3 originalObjectLP, originalObjectRP, originalObjectMP; //position
   Vector3 originalObjectLS, originalObjectRS, originalObjectMS; //scale
   float sensitivity;
+  Transform gameObj;
+  bool showText = false;
 
   private void Start() {
     sensitivity = GetComponentInParent<PlayerMovement>().MouseSensitivity;
@@ -35,7 +36,7 @@ public class Interact : MonoBehaviour {
     }
     if (Physics.Raycast(ray, out hit, raycastDistance)) {
       if (hit.transform.parent && hit.transform.parent.tag == "Interactible") {
-        Transform gameObj = hit.transform.parent.transform;
+        gameObj = hit.transform.parent.transform;
 
         if (Input.GetButtonDown("Interact")) {
           if (objectPickupState == PickupState.Placed) {
@@ -96,49 +97,40 @@ public class Interact : MonoBehaviour {
 
           pickedObjectL.rotation = Quaternion.Slerp(pickedObjectL.rotation, originalObjectLR, Time.deltaTime * pickupDamping);
           pickedObjectR.rotation = Quaternion.Slerp(pickedObjectR.rotation, originalObjectRR, Time.deltaTime * pickupDamping);
+          pickedObjectM.rotation = Quaternion.Slerp(pickedObjectM.rotation, originalObjectMR, Time.deltaTime * pickupDamping);
 
           pickedObjectL.localScale = Vector3.Lerp(pickedObjectL.localScale, originalObjectLS, Time.deltaTime * pickupDamping * 10);
           pickedObjectR.localScale = Vector3.Lerp(pickedObjectR.localScale, originalObjectRS, Time.deltaTime * pickupDamping * 10);
-          pickedObjectM.localScale = Vector3.Lerp(pickedObjectM.localScale, originalObjectMS, Time.deltaTime * pickupDamping * 10);
 
           if (pickedObjectL.rotation == originalObjectLR && pickedObjectL.position == originalObjectLP &&
               pickedObjectR.rotation == originalObjectRR && pickedObjectR.position == originalObjectRP &&
               pickedObjectM.localScale == originalObjectMS) {
             objectPickupState = PickupState.Placed;
-            if(pickedObjectL.localScale == Vector3.zero){
-              //todo
-              GameManager gm = GameObject.Find("Game Manager").transform.GetComponent<GameManager>();
-              gm.SetGameState(condition, true);
-            }
           }
 
           break;
         }
       case PickupState.Picked: {
-          if (Input.GetKey(KeyCode.A)) {
-            float rotationX = Input.GetAxis("Mouse X") * sensitivity;
-            float rotationY = Input.GetAxis("Mouse Y") * sensitivity;
+        if (Input.GetKey(KeyCode.A)) {
+          float rotationX = Input.GetAxis("Mouse X") * sensitivity;
+          float rotationY = Input.GetAxis("Mouse Y") * sensitivity;
 
-            pickedObjectR.transform.Rotate(new Vector3(-rotationY, -rotationX, 0), Space.Self);
-          }
-          else if (Input.GetKey(KeyCode.D)) {
-            float rotationX = Input.GetAxis("Mouse X") * sensitivity;
-            float rotationY = Input.GetAxis("Mouse Y") * sensitivity;
+          pickedObjectR.transform.Rotate(new Vector3(-rotationY, -rotationX, 0), Space.Self);
+        } else if (Input.GetKey(KeyCode.D)) {
+          float rotationX = Input.GetAxis("Mouse X") * sensitivity;
+          float rotationY = Input.GetAxis("Mouse Y") * sensitivity;
 
-            pickedObjectL.transform.Rotate(new Vector3(-rotationY, -rotationX, 0), Space.Self);
-          }
-
-          print("Forward: " + Vector3.Dot(pickedObjectL.transform.forward, pickedObjectR.transform.forward));
-          print("Right: " + (Vector3.Dot(pickedObjectL.transform.right, transform.forward)));
-
-          if (Vector3.Dot(pickedObjectL.transform.forward, pickedObjectR.transform.forward) > alignment &&
-              Vector3.Dot(pickedObjectL.transform.right, transform.forward) > alignment
-          ) {
-						objectPickupState = PickupState.Combining;
-					}
-
-          break;
+          pickedObjectL.transform.Rotate(new Vector3(-rotationY, -rotationX, 0), Space.Self);
         }
+
+        if (Vector3.Dot(pickedObjectL.transform.forward, pickedObjectR.transform.forward) > alignment &&
+            Vector3.Dot(pickedObjectL.transform.right, transform.forward) > alignment
+        ) {
+					objectPickupState = PickupState.Combining;
+				}
+
+        break;
+      }
 			case PickupState.Combining: {
           Vector3 targetLocation = transform.position + ray.direction * inspectDistance;
           pickedObjectL.position = Vector3.MoveTowards(pickedObjectL.position, targetLocation, Time.deltaTime * pickupDamping);
@@ -146,15 +138,44 @@ public class Interact : MonoBehaviour {
 
           pickedObjectL.localScale = Vector3.MoveTowards(pickedObjectL.localScale, Vector3.zero, Time.deltaTime * pickupDamping * 50);
           pickedObjectR.localScale = Vector3.MoveTowards(pickedObjectR.localScale, Vector3.zero, Time.deltaTime * pickupDamping * 50);
+          pickedObjectM.localScale = Vector3.MoveTowards(pickedObjectM.localScale, originalObjectLS, Time.deltaTime * pickupDamping * 50);
 
 				if(pickedObjectL.localScale == Vector3.zero && pickedObjectR.localScale == Vector3.zero){
           originalObjectMS = originalObjectLS;
           originalObjectLS = Vector3.zero;
           originalObjectRS = Vector3.zero;
-          objectPickupState = PickupState.Placing;
+          objectPickupState = PickupState.Observing;
         }
 				break;
 			}
+      case PickupState.Observing: {
+
+        if (Input.GetKeyDown(KeyCode.R)) {
+          //Toggle text with R
+          showText = !showText;
+        }
+
+        if(showText){
+          //Text being shown
+        } else {
+          //No text, but there is rotation
+          float rotationX = Input.GetAxis("Mouse X") * sensitivity;
+          float rotationY = Input.GetAxis("Mouse Y") * sensitivity;
+
+          pickedObjectM.transform.Rotate(new Vector3(-rotationY, -rotationX, 0), Space.Self);
+        
+          if (Input.GetButtonDown("Interact")) {
+            //If you interact, you place it down
+            objectPickupState = PickupState.Placing;
+            
+            print(gameObj.GetComponent<Condition>().condition);
+            GameManager gm = GameObject.Find("Game Manager").transform.GetComponent<GameManager>();
+            gm.SetGameState(gameObj.GetComponent<Condition>().condition, true);
+          }
+        }
+        
+        break;
+      }
       default: break;
     }
   }
