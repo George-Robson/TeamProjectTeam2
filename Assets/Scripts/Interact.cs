@@ -72,8 +72,8 @@ public class Interact : MonoBehaviour {
 
           //Scale
           float ratio = inspectDistance / raycastDistance;
-          pickedObjectL.localScale = Vector3.MoveTowards(pickedObjectL.localScale, new Vector3(ratio, ratio, ratio), Time.deltaTime * pickupDamping);
-          pickedObjectR.localScale = Vector3.MoveTowards(pickedObjectR.localScale, new Vector3(ratio, ratio, ratio), Time.deltaTime * pickupDamping);
+          pickedObjectL.localScale = Vector3.MoveTowards(pickedObjectL.localScale, new Vector3(originalObjectLS.x * ratio, originalObjectLS.y * ratio, originalObjectLS.z * ratio), Time.deltaTime * pickupDamping);
+          pickedObjectR.localScale = Vector3.MoveTowards(pickedObjectR.localScale, new Vector3(originalObjectRS.x * ratio, originalObjectRS.y * ratio, originalObjectRS.z * ratio), Time.deltaTime * pickupDamping);
 
           if (pickedObjectL.position == targetLocation - pickedObjectL.right * amount &&
               pickedObjectR.position == targetLocation + pickedObjectR.right * amount &&
@@ -116,7 +116,7 @@ public class Interact : MonoBehaviour {
 
           if (Vector3.Dot(pickedObjectL.transform.up, pickedObjectR.transform.up) < -alignment) {
 						//TODO if theyre correctly positioned
-						print("test");
+						objectPickupState = PickupState.Combining;
 					}
 
           break;
