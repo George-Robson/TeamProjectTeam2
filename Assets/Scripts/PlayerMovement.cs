@@ -47,7 +47,6 @@ public class PlayerMovement : MonoBehaviour {
         if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Picking ) return;
         if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Combining ) return;
 
-
         //Camera Vertical Rotation
         rotationY += Input.GetAxis("Mouse Y") * MouseSensitivity;
         rotationY = Mathf.Clamp(rotationY, MinimumY, MaximumY);
@@ -55,6 +54,5 @@ public class PlayerMovement : MonoBehaviour {
 
         //Body Horizontal Rotation
         Body.MoveRotation(Body.rotation * Quaternion.Euler(new Vector3(0, Input.GetAxis("Mouse X") * MouseSensitivity, 0)));
-
     }
 }
