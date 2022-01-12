@@ -8,8 +8,10 @@ public class PlayerMovement : MonoBehaviour {
     public float MinimumY = -60F;
     public float MaximumY = 60F;
     public float MoveSpeed = 0.2F;
-    public float CameraBobbingAmount = 1;
-    public float CameraBobbingSpeed = 5;
+    public float BobbingWalkingAmount = 1;
+    public float BobbingWalkingSpeed = 1;
+    public float BobbingStandingAmount = 1;
+    public float BobbingStandingSpeed = 1;
     
     float rotationY = 0F;
     float Timer = 0F;
@@ -26,6 +28,7 @@ public class PlayerMovement : MonoBehaviour {
     void FixedUpdate() {
         if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Picked) return;
         if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Picking ) return;
+        if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Combining ) return;
 
         Body.MovePosition(transform.position + (transform.forward * Input.GetAxis("Vertical") * MoveSpeed) + (transform.right * Input.GetAxis("Horizontal") * MoveSpeed));
     }
@@ -33,8 +36,8 @@ public class PlayerMovement : MonoBehaviour {
     void Update(){
         if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Picked ) return;
         if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Picking ) return;
+        if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Combining ) return;
 
-        Timer += Time.fixedDeltaTime * CameraBobbingSpeed;
 
         //Camera Vertical Rotation
         rotationY += Input.GetAxis("Mouse Y") * MouseSensitivity;
@@ -46,10 +49,11 @@ public class PlayerMovement : MonoBehaviour {
 
         //Camera Head Bobbing
         if(Input.GetButton("Horizontal") || Input.GetButton("Vertical")){
-            Cam.transform.position = new Vector3(Cam.transform.position.x, transform.position.y + 1 + Mathf.Sin(Timer) * CameraBobbingAmount, Cam.transform.position.z);
+            Timer += Time.fixedDeltaTime * BobbingWalkingSpeed;
+            Cam.transform.position = new Vector3(Cam.transform.position.x, transform.position.y + 1 + Mathf.Sin(Timer) * BobbingWalkingAmount, Cam.transform.position.z);
         } else {
-            Timer = 0F;
-            Cam.transform.position = new Vector3(Cam.transform.position.x, Mathf.Lerp(Cam.transform.position.y, transform.position.y + 1, Time.fixedDeltaTime), Cam.transform.position.z);
+            Timer += Time.fixedDeltaTime * BobbingStandingSpeed;
+            Cam.transform.position = new Vector3(Cam.transform.position.x, transform.position.y + 1 + Mathf.Sin(Timer) * BobbingStandingAmount, Cam.transform.position.z);
         }
     }
 }

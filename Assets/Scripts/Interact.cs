@@ -14,14 +14,10 @@ public class Interact : MonoBehaviour {
   public PickupState objectPickupState = PickupState.Placed;
 
   RaycastHit hit;
-  Transform pickedObjectL;
-  Transform pickedObjectR;
-  Vector3 originalObjectLP;
-  Quaternion originalObjectLR;
-  Vector3 originalObjectLS;
-  Vector3 originalObjectRP;
-  Quaternion originalObjectRR;
-  Vector3 originalObjectRS;
+  Transform pickedObjectL, pickedObjectR, pickedObjectM;
+  Quaternion originalObjectLR, originalObjectRR, originalObjectMR; //rotation
+  Vector3 originalObjectLP, originalObjectRP, originalObjectMP; //position
+  Vector3 originalObjectLS, originalObjectRS, originalObjectMS; //scale
   float sensitivity;
 
   private void Start() {
@@ -32,7 +28,7 @@ public class Interact : MonoBehaviour {
     Ray ray = GetComponent<Camera>().ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
 
     if (objectPickupState != PickupState.Placed) {
-      if (Input.GetButtonDown("Fire1")) {
+      if (Input.GetButtonDown("Interact")) {
         objectPickupState = PickupState.Placing;
       }
     }
@@ -40,7 +36,7 @@ public class Interact : MonoBehaviour {
       if (hit.transform.parent && hit.transform.parent.tag == "Interactible") {
         Transform gameObj = hit.transform.parent.transform;
 
-        if (Input.GetButtonDown("Fire1")) {
+        if (Input.GetButtonDown("Interact")) {
           if (objectPickupState == PickupState.Placed) {
             objectPickupState = PickupState.Picking;
 
@@ -53,6 +49,11 @@ public class Interact : MonoBehaviour {
             originalObjectRR = gameObj.transform.GetChild(1).transform.rotation;
             originalObjectRS = gameObj.transform.GetChild(1).transform.localScale;
             pickedObjectR = gameObj.transform.GetChild(1).transform;
+
+            originalObjectMP = gameObj.transform.GetChild(2).transform.position;
+            originalObjectMR = gameObj.transform.GetChild(2).transform.rotation;
+            originalObjectMS = gameObj.transform.GetChild(2).transform.localScale;
+            pickedObjectM = gameObj.transform.GetChild(2).transform;
           }
         }
       }
@@ -65,15 +66,17 @@ public class Interact : MonoBehaviour {
           Vector3 targetLocation = transform.position + ray.direction * inspectDistance;
           pickedObjectL.position = Vector3.MoveTowards(pickedObjectL.position, targetLocation - pickedObjectL.right * amount, Time.deltaTime * pickupDamping);
           pickedObjectR.position = Vector3.MoveTowards(pickedObjectR.position, targetLocation + pickedObjectR.right * amount, Time.deltaTime * pickupDamping);
+          pickedObjectM.position = Vector3.MoveTowards(pickedObjectM.position, targetLocation, Time.deltaTime * pickupDamping);
 
           //Rotate to face the camera
           pickedObjectL.rotation = Quaternion.Slerp(pickedObjectL.rotation, Quaternion.LookRotation(transform.position - pickedObjectL.transform.position), Time.deltaTime * pickupDamping);
           pickedObjectR.rotation = Quaternion.Slerp(pickedObjectR.rotation, Quaternion.LookRotation(transform.position - pickedObjectR.transform.position), Time.deltaTime * pickupDamping);
 
           //Scale
-          float ratio = inspectDistance / raycastDistance;
-          pickedObjectL.localScale = Vector3.MoveTowards(pickedObjectL.localScale, new Vector3(originalObjectLS.x * ratio, originalObjectLS.y * ratio, originalObjectLS.z * ratio), Time.deltaTime * pickupDamping);
-          pickedObjectR.localScale = Vector3.MoveTowards(pickedObjectR.localScale, new Vector3(originalObjectRS.x * ratio, originalObjectRS.y * ratio, originalObjectRS.z * ratio), Time.deltaTime * pickupDamping);
+          // float ratio = inspectDistance / raycastDistance;
+          float ratio = 1F;
+          pickedObjectL.localScale = Vector3.MoveTowards(pickedObjectL.localScale, new Vector3(originalObjectLS.x * ratio, originalObjectLS.y * ratio, originalObjectLS.z * ratio), Time.deltaTime * pickupDamping * 25);
+          pickedObjectR.localScale = Vector3.MoveTowards(pickedObjectR.localScale, new Vector3(originalObjectRS.x * ratio, originalObjectRS.y * ratio, originalObjectRS.z * ratio), Time.deltaTime * pickupDamping * 25);
 
           if (pickedObjectL.position == targetLocation - pickedObjectL.right * amount &&
               pickedObjectR.position == targetLocation + pickedObjectR.right * amount &&
@@ -88,13 +91,18 @@ public class Interact : MonoBehaviour {
       case PickupState.Placing: {
           pickedObjectL.position = Vector3.MoveTowards(pickedObjectL.position, originalObjectLP, Time.deltaTime * pickupDamping);
           pickedObjectR.position = Vector3.MoveTowards(pickedObjectR.position, originalObjectRP, Time.deltaTime * pickupDamping);
+          pickedObjectM.position = Vector3.MoveTowards(pickedObjectM.position, originalObjectMP, Time.deltaTime * pickupDamping);
+
           pickedObjectL.rotation = Quaternion.Slerp(pickedObjectL.rotation, originalObjectLR, Time.deltaTime * pickupDamping);
           pickedObjectR.rotation = Quaternion.Slerp(pickedObjectR.rotation, originalObjectRR, Time.deltaTime * pickupDamping);
-          pickedObjectL.localScale = Vector3.Lerp(pickedObjectL.localScale, originalObjectLS, Time.deltaTime * pickupDamping);
-          pickedObjectR.localScale = Vector3.Lerp(pickedObjectR.localScale, originalObjectRS, Time.deltaTime * pickupDamping);
+
+          pickedObjectL.localScale = Vector3.Lerp(pickedObjectL.localScale, originalObjectLS, Time.deltaTime * pickupDamping * 10);
+          pickedObjectR.localScale = Vector3.Lerp(pickedObjectR.localScale, originalObjectRS, Time.deltaTime * pickupDamping * 10);
+          pickedObjectM.localScale = Vector3.Lerp(pickedObjectM.localScale, originalObjectMS, Time.deltaTime * pickupDamping * 10);
 
           if (pickedObjectL.rotation == originalObjectLR && pickedObjectL.position == originalObjectLP &&
-              pickedObjectR.rotation == originalObjectRR && pickedObjectR.position == originalObjectRP) {
+              pickedObjectR.rotation == originalObjectRR && pickedObjectR.position == originalObjectRP &&
+              pickedObjectM.localScale == originalObjectMS) {
             objectPickupState = PickupState.Placed;
           }
 
@@ -114,24 +122,31 @@ public class Interact : MonoBehaviour {
             pickedObjectL.transform.Rotate(new Vector3(-rotationY, -rotationX, 0), Space.Self);
           }
 
-          if (Vector3.Dot(pickedObjectL.transform.forward, pickedObjectR.transform.forward) < -alignment) {
-						//TODO if theyre correctly positioned
-            print("test");
+          print("Forward: " + Vector3.Dot(pickedObjectL.transform.forward, pickedObjectR.transform.forward));
+          print("Right: " + (Vector3.Dot(pickedObjectL.transform.right, transform.forward)));
+
+          if (Vector3.Dot(pickedObjectL.transform.forward, pickedObjectR.transform.forward) > alignment &&
+              Vector3.Dot(pickedObjectL.transform.right, transform.forward) > alignment
+          ) {
 						objectPickupState = PickupState.Combining;
 					}
 
           break;
         }
 			case PickupState.Combining: {
-          float amount = 0.5F;
           Vector3 targetLocation = transform.position + ray.direction * inspectDistance;
-          pickedObjectL.position = Vector3.MoveTowards(pickedObjectL.position, targetLocation - pickedObjectL.right * amount, Time.deltaTime * pickupDamping);
-          pickedObjectR.position = Vector3.MoveTowards(pickedObjectR.position, targetLocation + pickedObjectR.right * amount, Time.deltaTime * pickupDamping);
+          pickedObjectL.position = Vector3.MoveTowards(pickedObjectL.position, targetLocation, Time.deltaTime * pickupDamping);
+          pickedObjectR.position = Vector3.MoveTowards(pickedObjectR.position, targetLocation, Time.deltaTime * pickupDamping);
 
-          pickedObjectL.rotation = Quaternion.Slerp(pickedObjectL.rotation, Quaternion.LookRotation(transform.position - pickedObjectL.transform.position), Time.deltaTime * pickupDamping);
-          pickedObjectR.rotation = Quaternion.Slerp(pickedObjectR.rotation, Quaternion.LookRotation(transform.position - pickedObjectR.transform.position), Time.deltaTime * pickupDamping);
+          pickedObjectL.localScale = Vector3.MoveTowards(pickedObjectL.localScale, Vector3.zero, Time.deltaTime * pickupDamping * 50);
+          pickedObjectR.localScale = Vector3.MoveTowards(pickedObjectR.localScale, Vector3.zero, Time.deltaTime * pickupDamping * 50);
 
-				// if()
+				if(pickedObjectL.localScale == Vector3.zero && pickedObjectR.localScale == Vector3.zero){
+          originalObjectMS = originalObjectLS;
+          originalObjectLS = Vector3.zero;
+          originalObjectRS = Vector3.zero;
+          objectPickupState = PickupState.Placing;
+        }
 				break;
 			}
       default: break;
