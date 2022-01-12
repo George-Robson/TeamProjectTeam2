@@ -128,7 +128,11 @@ public class Interact : MonoBehaviour
 
             pickedObjectL.transform.Rotate(new Vector3(-rotationY, -rotationX, 0), Space.Self);
           }
-          break;
+
+          //TODO
+          if (Vector3.dot(pickedObjectL.transform.direction, pickedObjectR.transform.direction) > 0.9)
+
+            break;
         }
       default: break;
     }
