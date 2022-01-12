@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
         {
             if (state.gameStateString == condition)
                 state.gameStateBool = boolean;
+            Debug.Log(state.gameStateBool);
             return;
         }
     }

@@ -7,7 +7,7 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
-    guid: c621381c9308c6247a9938ceb444ab15
+    guid: aff9aaf8d4c68984c9a5334437caafd0
   - enabled: 1
     path: Assets/Scenes/MasterScene.unity
     guid: fac00ad5aed10324a9743f3f773767be
@@ -17,10 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tavern.unity
     guid: 3d54700be811e36438bed51a0d6c9ebe
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/TestEnvironment.unity
     guid: da37d87ebf2f3a3468fe68bf58378c06
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Cube.unity
     guid: 83a2056bc40060f48af6f5e7d9441790
   m_configObjects: {}

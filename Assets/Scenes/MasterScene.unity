@@ -155,6 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conditions:
   - hasKey
+  - hasPower
 --- !u!4 &221104704
 Transform:
   m_ObjectHideFlags: 0
