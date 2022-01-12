@@ -6,9 +6,10 @@ public class Interact : MonoBehaviour {
   public float raycastDistance = 4F;
   public float inspectDistance = 1F;
   public float pickupDamping = 2;
+	public float alignment = 0.95F;
 
   [HideInInspector]
-  public enum PickupState { Picked, Picking, Placing, Placed }
+  public enum PickupState { Picked, Picking, Placing, Placed, Combining }
   [HideInInspector]
   public PickupState objectPickupState = PickupState.Placed;
 
@@ -113,10 +114,25 @@ public class Interact : MonoBehaviour {
             pickedObjectL.transform.Rotate(new Vector3(-rotationY, -rotationX, 0), Space.Self);
           }
 
-          //TODO
+          if (Vector3.Dot(pickedObjectL.transform.up, pickedObjectR.transform.up) < -alignment) {
+						//TODO if theyre correctly positioned
+						print("test");
+					}
 
           break;
         }
+			case PickupState.Combining: {
+          float amount = 0.5F;
+          Vector3 targetLocation = transform.position + ray.direction * inspectDistance;
+          pickedObjectL.position = Vector3.MoveTowards(pickedObjectL.position, targetLocation - pickedObjectL.right * amount, Time.deltaTime * pickupDamping);
+          pickedObjectR.position = Vector3.MoveTowards(pickedObjectR.position, targetLocation + pickedObjectR.right * amount, Time.deltaTime * pickupDamping);
+
+          pickedObjectL.rotation = Quaternion.Slerp(pickedObjectL.rotation, Quaternion.LookRotation(transform.position - pickedObjectL.transform.position), Time.deltaTime * pickupDamping);
+          pickedObjectR.rotation = Quaternion.Slerp(pickedObjectR.rotation, Quaternion.LookRotation(transform.position - pickedObjectR.transform.position), Time.deltaTime * pickupDamping);
+
+				// if()
+				break;
+			}
       default: break;
     }
   }
