@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class StartGame : MonoBehaviour
 {
     public void LoadMasterScene() {
-        SceneManager.LoadScene("MasterScene");
+        Debug.Log("click");
+        SceneManager.LoadScene("Tavern");
     }
 }

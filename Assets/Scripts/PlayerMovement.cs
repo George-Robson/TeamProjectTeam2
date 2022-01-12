@@ -29,24 +29,10 @@ public class PlayerMovement : MonoBehaviour {
         if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Picked) return;
         if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Picking ) return;
         if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Combining ) return;
+        if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Observing ) return;
 
         Body.MovePosition(transform.position + (transform.forward * Input.GetAxis("Vertical") * MoveSpeed) + (transform.right * Input.GetAxis("Horizontal") * MoveSpeed));
-    }
-
-    void Update(){
-        if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Picked ) return;
-        if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Picking ) return;
-        if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Combining ) return;
-
-
-        //Camera Vertical Rotation
-        rotationY += Input.GetAxis("Mouse Y") * MouseSensitivity;
-        rotationY = Mathf.Clamp(rotationY, MinimumY, MaximumY);
-        Cam.transform.localEulerAngles = new Vector3(-rotationY, 0, 0);
-
-        //Body Horizontal Rotation
-        Body.MoveRotation(Body.rotation * Quaternion.Euler(new Vector3(0, Input.GetAxis("Mouse X") * MouseSensitivity, 0)));
-
+        
         //Camera Head Bobbing
         if(Input.GetButton("Horizontal") || Input.GetButton("Vertical")){
             Timer += Time.fixedDeltaTime * BobbingWalkingSpeed;
@@ -55,5 +41,20 @@ public class PlayerMovement : MonoBehaviour {
             Timer += Time.fixedDeltaTime * BobbingStandingSpeed;
             Cam.transform.position = new Vector3(Cam.transform.position.x, transform.position.y + 1 + Mathf.Sin(Timer) * BobbingStandingAmount, Cam.transform.position.z);
         }
+    }
+
+    void Update(){
+        if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Picked ) return;
+        if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Picking ) return;
+        if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Combining ) return;
+        if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Observing ) return;
+
+        //Camera Vertical Rotation
+        rotationY += Input.GetAxis("Mouse Y") * MouseSensitivity;
+        rotationY = Mathf.Clamp(rotationY, MinimumY, MaximumY);
+        Cam.transform.localEulerAngles = new Vector3(-rotationY, 0, 0);
+
+        //Body Horizontal Rotation
+        Body.MoveRotation(Body.rotation * Quaternion.Euler(new Vector3(0, Input.GetAxis("Mouse X") * MouseSensitivity, 0)));
     }
 }
