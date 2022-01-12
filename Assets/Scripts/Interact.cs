@@ -114,7 +114,7 @@ public class Interact : MonoBehaviour {
             pickedObjectL.transform.Rotate(new Vector3(-rotationY, -rotationX, 0), Space.Self);
           }
 
-          if (Vector3.Dot(pickedObjectL.transform.forward, pickedObjectR.transform.forward) < -alignment) {
+          if (Vector3.Dot(pickedObjectL.transform.up, pickedObjectR.transform.up) < -alignment) {
 						//TODO if theyre correctly positioned
 						print("test");
 					}
@@ -130,7 +130,7 @@ public class Interact : MonoBehaviour {
           pickedObjectL.rotation = Quaternion.Slerp(pickedObjectL.rotation, Quaternion.LookRotation(transform.position - pickedObjectL.transform.position), Time.deltaTime * pickupDamping);
           pickedObjectR.rotation = Quaternion.Slerp(pickedObjectR.rotation, Quaternion.LookRotation(transform.position - pickedObjectR.transform.position), Time.deltaTime * pickupDamping);
 
-				if()
+				// if()
 				break;
 			}
       default: break;
