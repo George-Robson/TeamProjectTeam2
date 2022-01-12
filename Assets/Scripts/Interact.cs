@@ -20,6 +20,7 @@ public class Interact : MonoBehaviour {
   Vector3 originalObjectLS, originalObjectRS, originalObjectMS; //scale
   float sensitivity;
   Transform gameObj;
+  bool showText = false;
 
   private void Start() {
     sensitivity = GetComponentInParent<PlayerMovement>().MouseSensitivity;
@@ -148,20 +149,31 @@ public class Interact : MonoBehaviour {
 				break;
 			}
       case PickupState.Observing: {
-        float rotationX = Input.GetAxis("Mouse X") * sensitivity;
-        float rotationY = Input.GetAxis("Mouse Y") * sensitivity;
 
-        pickedObjectM.transform.Rotate(new Vector3(-rotationY, -rotationX, 0), Space.Self);
+        if (Input.GetKeyDown(KeyCode.R)) {
+          //Toggle text with R
+          showText = !showText;
+        }
+
+        if(showText){
+          //Text being shown
+        } else {
+          //No text, but there is rotation
+          float rotationX = Input.GetAxis("Mouse X") * sensitivity;
+          float rotationY = Input.GetAxis("Mouse Y") * sensitivity;
+
+          pickedObjectM.transform.Rotate(new Vector3(-rotationY, -rotationX, 0), Space.Self);
         
-        if (Input.GetButtonDown("Interact")) {
-          objectPickupState = PickupState.Placing;
-          
-          print(gameObj.GetComponent<Condition>().condition);
-          GameManager gm = GameObject.Find("Game Manager").transform.GetComponent<GameManager>();
-          gm.SetGameState(gameObj.GetComponent<Condition>().condition, true);
+          if (Input.GetButtonDown("Interact")) {
+            //If you interact, you place it down
+            objectPickupState = PickupState.Placing;
+            
+            print(gameObj.GetComponent<Condition>().condition);
+            GameManager gm = GameObject.Find("Game Manager").transform.GetComponent<GameManager>();
+            gm.SetGameState(gameObj.GetComponent<Condition>().condition, true);
+          }
         }
         
-
         break;
       }
       default: break;
