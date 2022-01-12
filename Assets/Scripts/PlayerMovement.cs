@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour {
     void FixedUpdate() {
         if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Picked) return;
         if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Picking ) return;
+        if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Combining ) return;
 
         Body.MovePosition(transform.position + (transform.forward * Input.GetAxis("Vertical") * MoveSpeed) + (transform.right * Input.GetAxis("Horizontal") * MoveSpeed));
     }
@@ -33,6 +34,7 @@ public class PlayerMovement : MonoBehaviour {
     void Update(){
         if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Picked ) return;
         if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Picking ) return;
+        if(Cam.GetComponent<Interact>().objectPickupState == Interact.PickupState.Combining ) return;
 
         Timer += Time.fixedDeltaTime * CameraBobbingSpeed;
 
