@@ -29,7 +29,7 @@ public class SceneLoadVolume : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         // Debug.Log("Collision with " + other.transform.name);
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && other.GetComponent<canChangeLevel>().getCanChangeLevel())
         {
             blackScreen.Play("FadeScreenOut");
             sceneController.LoadScene(sceneToLoad);

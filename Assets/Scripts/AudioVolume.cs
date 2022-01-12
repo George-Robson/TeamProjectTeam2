@@ -5,6 +5,7 @@ public class AudioVolume : MonoBehaviour
 {
     private AudioSource audioSource;
     public AudioClip audioClip;
+    private Animator subtitleBackground;
     [SerializeField, Range(0f, 1f)] private float volume = 1;
     public bool requiresCondition;
     public string condition;
@@ -25,13 +26,12 @@ public class AudioVolume : MonoBehaviour
     [SerializeField, TextArea] public string closedCaption5;
     private float startTime = 0;
     private bool triggered = false;
-    private bool notComplete = true;
 
-    void Start()
-    {
+    void Start() {
+        subtitleBackground = GameObject.Find("UI Canvas").transform.GetChild(0).GetComponent<Animator>();
         audioSource = GameObject.Find("Player").transform.GetChild(0).GetComponent<Camera>().GetComponent<AudioSource>();
         gameManager = GameObject.Find("Game Manager").transform.GetComponent<GameManager>();
-        textMeshProUGUI = GameObject.Find("UI Canvas").transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        textMeshProUGUI = GameObject.Find("UI Canvas").transform.GetChild(1).GetComponent<TextMeshProUGUI>();
     }
 
     private void Update() {
@@ -47,6 +47,8 @@ public class AudioVolume : MonoBehaviour
     }
 
     void ShowCC() {
+        GameObject.Find("Player").GetComponent<canChangeLevel>().setCanChangeLevel(false);
+        subtitleBackground.Play("FadeIn");
         if (startTime < cC1Duration)
             textMeshProUGUI.text = closedCaption1;
         else if (startTime < cC1Duration + cC2Duration)
@@ -60,6 +62,8 @@ public class AudioVolume : MonoBehaviour
         else
         {
             textMeshProUGUI.text = "";
+            GameObject.Find("Player").GetComponent<canChangeLevel>().setCanChangeLevel(true);
+            subtitleBackground.Play("FadeOut");
             return;
         }
         startTime += Time.deltaTime;

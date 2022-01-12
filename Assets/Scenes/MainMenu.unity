@@ -1085,7 +1085,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: -0.000000029802, y: -104.06}
-  m_SizeDelta: {x: 855, y: 208.1}
+  m_SizeDelta: {x: 410.7677, y: 99.9775}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1900340469
 MonoBehaviour:
@@ -1109,10 +1109,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 353bbb564d4283b4da414c60f97c8cb0, type: 3}
-    m_FontSize: 14
+    m_FontSize: 9
     m_FontStyle: 0
     m_BestFit: 1
-    m_MinSize: 10
+    m_MinSize: 0
     m_MaxSize: 300
     m_Alignment: 7
     m_AlignByGeometry: 1
@@ -1120,7 +1120,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Mage
+  m_Text: Surge ex ira
 --- !u!222 &1900340470
 CanvasRenderer:
   m_ObjectHideFlags: 0
