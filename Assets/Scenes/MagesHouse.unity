@@ -8310,7 +8310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 305842838791075042, guid: 65655e659dd5c4a488707b090ea0d811, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65655e659dd5c4a488707b090ea0d811, type: 3}
@@ -11346,15 +11346,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 305842838791074975, guid: 65655e659dd5c4a488707b090ea0d811, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 29.89
+      value: 29.1
       objectReference: {fileID: 0}
     - target: {fileID: 305842838791074975, guid: 65655e659dd5c4a488707b090ea0d811, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 117.15
+      value: 116.318275
       objectReference: {fileID: 0}
     - target: {fileID: 305842838791074975, guid: 65655e659dd5c4a488707b090ea0d811, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -18.83
+      value: -19.22
       objectReference: {fileID: 0}
     - target: {fileID: 305842838791074975, guid: 65655e659dd5c4a488707b090ea0d811, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11389,10 +11389,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: aac81792761482140bf1387071316895, type: 3}
     - target: {fileID: 305842838791075040, guid: 65655e659dd5c4a488707b090ea0d811, type: 3}
-      propertyPath: condition
-      value: GemPlace
-      objectReference: {fileID: 0}
-    - target: {fileID: 305842838791075040, guid: 65655e659dd5c4a488707b090ea0d811, type: 3}
       propertyPath: cC1Duration
       value: 11
       objectReference: {fileID: 0}
@@ -11402,7 +11398,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 305842838791075040, guid: 65655e659dd5c4a488707b090ea0d811, type: 3}
       propertyPath: cC3Duration
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 305842838791075040, guid: 65655e659dd5c4a488707b090ea0d811, type: 3}
       propertyPath: cC4Duration
@@ -11444,10 +11440,6 @@ PrefabInstance:
       propertyPath: textMeshProUGUI
       value: 
       objectReference: {fileID: 4087378547626346997, guid: 0d8589f4da38370489aa55383ee1a486, type: 3}
-    - target: {fileID: 305842838791075040, guid: 65655e659dd5c4a488707b090ea0d811, type: 3}
-      propertyPath: requiresCondition
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 305842838791075042, guid: 65655e659dd5c4a488707b090ea0d811, type: 3}
       propertyPath: m_Name
       value: Audio Volume (5)

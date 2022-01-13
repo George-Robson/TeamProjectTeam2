@@ -48,11 +48,6 @@ MonoBehaviour:
   - HasKey
   - BookFix
   - BookDown
-  - SwordRepair
-  - GemPickup
-  - GemFix
-  - GemPlace
-  - LuteRepaired
 --- !u!114 &3737584350972641744
 MonoBehaviour:
   m_ObjectHideFlags: 0

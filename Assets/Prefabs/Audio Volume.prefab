@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 305842838791074975}
   - component: {fileID: 305842838791075040}
   - component: {fileID: 305842838791075041}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Audio Volume
   m_TagString: Untagged
   m_Icon: {fileID: 2800000, guid: e0f311c3650674541aa756005cb47d33, type: 3}
@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1386042afebc36a4d80330b308500477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textMeshProUGUI: {fileID: 0}
   audioClip: {fileID: 0}
   volume: 1
   requiresCondition: 0
