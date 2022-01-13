@@ -32,13 +32,13 @@ public class Interact : MonoBehaviour {
     Ray rayL = GetComponent<Camera>().ScreenPointToRay(new Vector3(Screen.width / 3 * 2, Screen.height / 2, 0));
     Ray rayR = GetComponent<Camera>().ScreenPointToRay(new Vector3(Screen.width / 3, Screen.height / 2, 0));
 
-    if (objectPickupState != PickupState.Placed) {
+    if (objectPickupState != PickupState.Placed && objectPickupState != PickupState.Combining) {
       if (Input.GetButtonDown("Interact")) {
         objectPickupState = PickupState.Placing;
       }
     }
     if (Physics.Raycast(ray, out hit, raycastDistance)) {
-      if (hit.transform.parent && hit.transform.parent.tag == "Interactible") {
+      if (hit.transform.parent && hit.transform.parent.tag == "Interactible" && hit.transform.tag != "Gem") {
         gameObj = hit.transform.parent.transform;
 
         if (Input.GetButtonDown("Interact")) {
@@ -59,6 +59,7 @@ public class Interact : MonoBehaviour {
             originalObjectMR = gameObj.transform.GetChild(2).transform.rotation;
             originalObjectMS = gameObj.transform.GetChild(2).transform.localScale;
             pickedObjectM = gameObj.transform.GetChild(2).transform;
+            pickedObjectM.GetComponent<MeshCollider>().enabled = false;
           }
         }
       }
@@ -111,6 +112,7 @@ public class Interact : MonoBehaviour {
               pickedObjectR.rotation == originalObjectRR && pickedObjectR.position == originalObjectRP &&
               pickedObjectM.localScale == originalObjectMS) {
             objectPickupState = PickupState.Placed;
+            pickedObjectM.GetComponent<MeshCollider>().enabled = true;
           }
 
           break;
