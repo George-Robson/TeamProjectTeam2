@@ -112,11 +112,6 @@ public class Interact : MonoBehaviour {
               pickedObjectM.localScale == originalObjectMS) {
             objectPickupState = PickupState.Placed;
             pickedObjectM.GetComponent<Collider>().enabled = true;
-            if (pickedObjectM.localScale == originalObjectLS)
-            { 
-              GameManager gm = GameObject.Find("Game Manager").transform.GetComponent<GameManager>();
-              gm.SetGameState(gameObj.GetComponent<Condition>().placedCondition, true); 
-            }
           }
 
           break;
@@ -139,8 +134,6 @@ public class Interact : MonoBehaviour {
         ) {
 					objectPickupState = PickupState.Combining;
 				}
-        if (Input.GetKeyDown("Z"))
-          objectPickupState = PickupState.Combining;
 
         break;
       }
@@ -152,6 +145,9 @@ public class Interact : MonoBehaviour {
           pickedObjectL.localScale = Vector3.MoveTowards(pickedObjectL.localScale, Vector3.zero, Time.deltaTime * pickupDamping * originalObjectLS.x / 2);
           pickedObjectR.localScale = Vector3.MoveTowards(pickedObjectR.localScale, Vector3.zero, Time.deltaTime * pickupDamping * originalObjectLS.x / 2);
           pickedObjectM.localScale = Vector3.MoveTowards(pickedObjectM.localScale, originalObjectLS, Time.deltaTime * pickupDamping * originalObjectLS.x / 2);
+          
+          
+          gameObj.GetComponent<Condition>().ObjectFixed(); 
 
 				if(pickedObjectL.localScale == Vector3.zero && pickedObjectR.localScale == Vector3.zero){
           originalObjectMS = originalObjectLS;
@@ -182,8 +178,7 @@ public class Interact : MonoBehaviour {
             objectPickupState = PickupState.Placing;
             
             print(gameObj.GetComponent<Condition>().fixedCondition);
-            GameManager gm = GameObject.Find("Game Manager").transform.GetComponent<GameManager>();
-            gm.SetGameState(gameObj.GetComponent<Condition>().fixedCondition, true);
+            gameObj.GetComponent<Condition>().ObjectPlaced();
           }
         }
         
