@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1265539356773562953}
   - component: {fileID: 3467807682484467713}
   - component: {fileID: 7453276501239721463}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 1728820300312058484}
   - component: {fileID: 118395237}
   - component: {fileID: 124449791}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ MonoBehaviour:
   raycastDistance: 4
   inspectDistance: 1
   pickupDamping: 2
-  alignment: 0.95
+  alignment: 0.9
   objectPickupState: 3
 --- !u!114 &118395237
 MonoBehaviour:
