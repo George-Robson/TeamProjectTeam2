@@ -6,7 +6,16 @@ using UnityEngine;
 
 public class KeyUI : MonoBehaviour
 {
+    private GameManager gameManager;
+    
     private void Update() {
-        gameObject.SetActive(GameObject.Find("Game Manager").transform.GetComponent<GameManager>().FindState("HasKey"));
+        if (gameManager == null)
+        {
+            gameManager = GameObject.Find("Game Manager").transform.GetComponent<GameManager>();
+        }
+        
+        if (gameManager.FindState("HasKey")) {
+            gameObject.SetActive(true);
+        } else {gameObject.SetActive(false);}
     }
 }
