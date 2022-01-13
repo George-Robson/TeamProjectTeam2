@@ -139,6 +139,10 @@ public class Interact : MonoBehaviour {
         ) {
 					objectPickupState = PickupState.Combining;
 				}
+        
+        if (Input.GetKeyDown(KeyCode.Q)) {
+          objectPickupState = PickupState.Combining;
+        }
 
         break;
       }
@@ -150,8 +154,7 @@ public class Interact : MonoBehaviour {
           pickedObjectL.localScale = Vector3.MoveTowards(pickedObjectL.localScale, Vector3.zero, Time.deltaTime * pickupDamping * originalObjectLS.x / 2);
           pickedObjectR.localScale = Vector3.MoveTowards(pickedObjectR.localScale, Vector3.zero, Time.deltaTime * pickupDamping * originalObjectLS.x / 2);
           pickedObjectM.localScale = Vector3.MoveTowards(pickedObjectM.localScale, originalObjectLS, Time.deltaTime * pickupDamping * originalObjectLS.x / 2);
-          
-          
+                    
           gameObj.GetComponent<Condition>().ObjectFixed(); 
 
 				if(pickedObjectL.localScale == Vector3.zero && pickedObjectR.localScale == Vector3.zero){
@@ -163,7 +166,6 @@ public class Interact : MonoBehaviour {
 				break;
 			}
       case PickupState.Observing: {
-
         if (Input.GetKeyDown(KeyCode.R)) {
           //Toggle text with R
           showText = !showText;
