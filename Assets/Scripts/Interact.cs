@@ -112,6 +112,11 @@ public class Interact : MonoBehaviour {
               pickedObjectM.localScale == originalObjectMS) {
             objectPickupState = PickupState.Placed;
             pickedObjectM.GetComponent<Collider>().enabled = true;
+            if (GameObject.Find("Game Manager").GetComponent<GameManager>().FindState(gameObj.GetComponent<Condition>().placedCondition))
+            {
+              print(gameObj.GetComponent<Condition>().placedCondition);
+              gameObj.GetComponent<Condition>().ObjectPlaced();
+            }
           }
 
           break;
@@ -134,6 +139,10 @@ public class Interact : MonoBehaviour {
         ) {
 					objectPickupState = PickupState.Combining;
 				}
+        
+        if (Input.GetKeyDown(KeyCode.Q)) {
+          objectPickupState = PickupState.Combining;
+        }
 
         break;
       }
@@ -145,8 +154,7 @@ public class Interact : MonoBehaviour {
           pickedObjectL.localScale = Vector3.MoveTowards(pickedObjectL.localScale, Vector3.zero, Time.deltaTime * pickupDamping * originalObjectLS.x / 2);
           pickedObjectR.localScale = Vector3.MoveTowards(pickedObjectR.localScale, Vector3.zero, Time.deltaTime * pickupDamping * originalObjectLS.x / 2);
           pickedObjectM.localScale = Vector3.MoveTowards(pickedObjectM.localScale, originalObjectLS, Time.deltaTime * pickupDamping * originalObjectLS.x / 2);
-          
-          
+                    
           gameObj.GetComponent<Condition>().ObjectFixed(); 
 
 				if(pickedObjectL.localScale == Vector3.zero && pickedObjectR.localScale == Vector3.zero){
@@ -158,7 +166,6 @@ public class Interact : MonoBehaviour {
 				break;
 			}
       case PickupState.Observing: {
-
         if (Input.GetKeyDown(KeyCode.R)) {
           //Toggle text with R
           showText = !showText;
@@ -176,9 +183,8 @@ public class Interact : MonoBehaviour {
           if (Input.GetButtonDown("Interact")) {
             //If you interact, you place it down
             objectPickupState = PickupState.Placing;
-            
-            print(gameObj.GetComponent<Condition>().fixedCondition);
             gameObj.GetComponent<Condition>().ObjectPlaced();
+            
           }
         }
         
