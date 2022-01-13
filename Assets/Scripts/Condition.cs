@@ -3,5 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Condition : MonoBehaviour {
-    public string condition;
+    public string fixedCondition;
+    public string placedCondition;
 }
