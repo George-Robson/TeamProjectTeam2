@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7413bd09-9a5c-497f-adf6-0a92f2626ae3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Condition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Condition.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interact.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interact.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,7 +70,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1642091022467</updated>
-      <workItem from="1642091025308" duration="3467000" />
+      <workItem from="1642091025308" duration="4251000" />
     </task>
     <servers />
   </component>

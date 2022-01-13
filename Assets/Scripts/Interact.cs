@@ -139,6 +139,8 @@ public class Interact : MonoBehaviour {
         ) {
 					objectPickupState = PickupState.Combining;
 				}
+        if (Input.GetKeyDown("Z"))
+          objectPickupState = PickupState.Combining;
 
         break;
       }
