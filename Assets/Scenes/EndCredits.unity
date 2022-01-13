@@ -5235,7 +5235,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1007180467}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 3.3448384, y: 13.727616, z: 59.365234}
+  m_LocalPosition: {x: 126, y: 306, z: -153}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 354767513}
@@ -5271,6 +5271,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 2059513667}
   - {fileID: 1750501973}
   - {fileID: 1436546797}
   - {fileID: 1890561014}
@@ -5373,7 +5374,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1304486795}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5400,107 +5401,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Now, this is a story all about how
-
-    My life got flipped-turned upside
-    down
-
-    And I''d like to take a minute
-
-    Just sit right there
-
-    I''ll
-    tell you how I became the prince of a town called Bel-Air
-
-    In West Philadelphia
-    born and raised
-
-    On the playground was where I spent most of my days
-
-    Chillin''
-    out, maxin'', relaxin'', all cool
-
-    And all shootin'' some b-ball outside
-    of the school
-
-    When a couple of guys who were up to no good
-
-    Started
-    making trouble in my neighborhood
-
-    I got in one little fight and my mom got
-    scared
-
-    She said, "You''re movin'' with your auntie and uncle in Bel-Air"
-
-    I
-    begged and pleaded with her day after day
-
-    But she packed my suitcase and
-    sent me on my way
-
-    She gave me a kiss and then she gave me my ticket
-
-    I
-    put my Walkman on and said, "I might as well kick it"
-
-    First class, yo this
-    is bad
-
-    Drinking orange juice out of a champagne glass
-
-    Is this what
-    the people of Bel-Air living like?
-
-    Hmm this might be alright
-
-    But wait
-    I hear they''re prissy, bourgeois, all that
-
-    Is this the type of place that
-    they just send this cool cat?
-
-    I don''t think so
-
-    I''ll see when I get
-    there
-
-    I hope they''re prepared for the prince of Bel-Air
-
-    Well, the
-    plane landed and when I came out
-
-    There was a dude who looked like a cop
-    standing there with my name out
-
-    I ain''t trying to get arrested yet, I just
-    got here
-
-    I sprang with the quickness like lightning, disappeared
-
-    I
-    whistled for a cab and when it came near
-
-    The license plate said, "Fresh"
-    and it had dice in the mirror
-
-    If anything I could say that this cab was
-    rare
-
-    But I thought "Nah, forget it, yo, holmes to Bel Air"
-
-    I pulled
-    up to the house about seven or eight
-
-    And I yelled to the cabbie, "Yo holmes,
-    smell ya later"
-
-    I looked at my kingdom
-
-    I was finally there
-
-    To
-    sit on my throne as the prince of Bel-Air'
+  m_text: "Lead Designers\r\nJack Marston\r\nLewis Palin\r\n\r\nVoice Acting\r\nKyle
+    Simmonds (Grandmage Aston Validus)\r\n\r\nLead Programmers\r\nCristian \u201CLexxie\u201D
+    Vegh\r\nGeorge Robson\r\n\r\nEnvironment & Level Design\r\nHarvey Stanyer\r\nJack
+    Marston\r\nJoshua Sanderson\r\nLewis Palin\r\nMichael Jocelyn\r\n\r\nAsset Design\r\nHarvey
+    Stanyer\r\nJack Marston\r\nJoshua Sanderson\r\nMichael Jocelyn\r\n\r\nWriting\r\nKyle
+    Simmonds\r\n\r\nProject Management\r\nLewis Palin\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f41b47964f5f82741b1e13d6d143e8be, type: 2}
   m_sharedMaterial: {fileID: -4291382524101798155, guid: f41b47964f5f82741b1e13d6d143e8be, type: 2}
@@ -5509,8 +5415,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 1476395007
-  m_fontColor: {r: 1, g: 1, b: 1, a: 0.34117648}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5673,7 +5579,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1304486795}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5748,11 +5654,11 @@ RectTransform:
   m_LocalScale: {x: 3.0887, y: 3.0887, z: 3.0887}
   m_Children: []
   m_Father: {fileID: 1304486795}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 56, y: 0}
+  m_AnchoredPosition: {x: -1.3, y: 56.1}
   m_SizeDelta: {x: 267.7716, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1890561015
@@ -5775,7 +5681,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Surge ex ira
+  m_text: 'Thank You For Playing
+
+    Surge Ex Ira'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f41b47964f5f82741b1e13d6d143e8be, type: 2}
   m_sharedMaterial: {fileID: -4291382524101798155, guid: f41b47964f5f82741b1e13d6d143e8be, type: 2}
@@ -5784,7 +5692,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 16777215
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -5838,7 +5746,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0.5754776, y: 0, z: 0, w: 0}
+  m_margin: {x: -106.65664, y: 0, z: -108.545715, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -5852,6 +5760,89 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1890561013}
   m_CullTransparentMesh: 1
+--- !u!1 &2059513666
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2059513667}
+  - component: {fileID: 2059513668}
+  m_Layer: 0
+  m_Name: MainTitle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2059513667
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059513666}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1, y: -18, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1304486795}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &2059513668
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059513666}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: cc6ca2187cd6c62429b8ab5410a43e28, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 9.28, y: 6.95}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!4 &127868050043676709
 Transform:
   m_ObjectHideFlags: 0
@@ -6310,7 +6301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 909081e8a009abe4ab269e3299b5b1c1, type: 2}
+  sharedProfile: {fileID: 11400000, guid: c0591d25c5699484080048e3c1f5cd38, type: 2}
   isGlobal: 1
   blendDistance: 0
   weight: 1
