@@ -11,6 +11,8 @@ public class SceneLoadVolume : MonoBehaviour
     private Animator blackScreen;
     public float fadeSpeed = 0.0001f;
     public bool disableWireframeGizmos;
+    public bool requiresCondition;
+    public string condition;
 
     private void Start() {
         blackScreen = GameObject.Find("Black Screen").GetComponent<Animator>();
@@ -29,6 +31,8 @@ public class SceneLoadVolume : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         // Debug.Log("Collision with " + other.transform.name);
+        if (requiresCondition && !GameObject.Find("Game Manager").GetComponent<GameManager>().FindState(condition))
+            return;
         if (other.CompareTag("Player") && other.GetComponent<canChangeLevel>().getCanChangeLevel())
         {
             blackScreen.Play("FadeScreenOut");
