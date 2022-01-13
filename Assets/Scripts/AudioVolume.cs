@@ -28,7 +28,7 @@ public class AudioVolume : MonoBehaviour
     private float startTime = 0;
     private bool triggered = false;
     private Transform UILocation;
-    private bool UISpawned;
+    private bool UISpawned = false;
 
     void Start()
     {

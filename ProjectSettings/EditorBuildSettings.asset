@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EndCredits.unity
     guid: d17e4d54627e38b49a14413a98cdff1e
+  - enabled: 1
+    path: Assets/Scenes/Throne_Room.unity
+    guid: 30be38a4fa1c06e40a9198c109c17e83
   m_configObjects: {}

@@ -22,11 +22,18 @@ public class Pickup : MonoBehaviour
         interactUI.gameObject.SetActive(false);
     }
 
-    private void OnTriggerEnter(Collider other) {
+    private void OnTriggerStay(Collider other) {
         if (other.CompareTag("Player"))
         {
             interactUI.gameObject.SetActive(true);
             interactable = true;
+            
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Debug.Log("interact");
+                gameManager.SetGameState(givesCondition, true);
+                Destroy(gameObject);
+            }
         }
     }
 

@@ -236,6 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1386042afebc36a4d80330b308500477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textMeshProUGUI: {fileID: 0}
   audioClip: {fileID: 8300000, guid: 779b380fb3512304aa081e97536054f0, type: 3}
   volume: 1
   requiresCondition: 0
@@ -992,7 +993,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3047747425053346920, guid: 3ecf0a39ba753b9438382422f033ae60, type: 3}
       propertyPath: sceneToLoad
-      value: Cube
+      value: Throne_Room
       objectReference: {fileID: 0}
     - target: {fileID: 3047747425053346920, guid: 3ecf0a39ba753b9438382422f033ae60, type: 3}
       propertyPath: scenesToLoad.Array.size
@@ -1068,35 +1069,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3047747426132332052, guid: 3ecf0a39ba753b9438382422f033ae60, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.97
+      value: -97.54
       objectReference: {fileID: 0}
     - target: {fileID: 3047747426132332052, guid: 3ecf0a39ba753b9438382422f033ae60, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.53999996
+      value: 1.837
       objectReference: {fileID: 0}
     - target: {fileID: 3047747426132332052, guid: 3ecf0a39ba753b9438382422f033ae60, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 15.57
+      value: 136.59
       objectReference: {fileID: 0}
     - target: {fileID: 3047747426132332052, guid: 3ecf0a39ba753b9438382422f033ae60, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8304861
+      value: 0.9994983
       objectReference: {fileID: 0}
     - target: {fileID: 3047747426132332052, guid: 3ecf0a39ba753b9438382422f033ae60, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3047747426132332052, guid: 3ecf0a39ba753b9438382422f033ae60, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.55703944
+      value: 0.03167247
       objectReference: {fileID: 0}
     - target: {fileID: 3047747426132332052, guid: 3ecf0a39ba753b9438382422f033ae60, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3047747426132332052, guid: 3ecf0a39ba753b9438382422f033ae60, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 67.703
+      value: 3.63
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ecf0a39ba753b9438382422f033ae60, type: 3}

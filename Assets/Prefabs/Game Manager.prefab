@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conditions:
-  - hasKey
-  - hasPower
+  - HasKey
+  - BookFix
+  - BookDown
 --- !u!114 &3737584350972641744
 MonoBehaviour:
   m_ObjectHideFlags: 0
