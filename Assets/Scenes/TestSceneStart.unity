@@ -1004,6 +1004,10 @@ PrefabInstance:
       value: Throne_Room
       objectReference: {fileID: 0}
     - target: {fileID: 3047747425053346920, guid: 3ecf0a39ba753b9438382422f033ae60, type: 3}
+      propertyPath: requiresInteract
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3047747425053346920, guid: 3ecf0a39ba753b9438382422f033ae60, type: 3}
       propertyPath: scenesToLoad.Array.size
       value: 1
       objectReference: {fileID: 0}

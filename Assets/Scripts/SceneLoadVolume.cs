@@ -17,6 +17,7 @@ public class SceneLoadVolume : MonoBehaviour
     public Canvas canvas;
     private Camera cam;
     private GameManager gameManager;
+    private bool interactable = false;
 
     private void Start() {
         blackScreen = GameObject.Find("Black Screen").GetComponent<Animator>();
@@ -42,14 +43,8 @@ public class SceneLoadVolume : MonoBehaviour
             return;
         if (other.CompareTag("Player") && other.GetComponent<canChangeLevel>().getCanChangeLevel())
         {
-            if (requiresInteract)
+            if (interactable)
             {
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    blackScreen.Play("FadeScreenOut");
-                    sceneController.LoadScene(sceneToLoad);
-                    other.transform.SetPositionAndRotation(playerTeleportPosition.transform.position, playerTeleportPosition.transform.rotation);
-                } 
                 canvas.gameObject.SetActive(true);
                 canvas.transform.LookAt(cam.gameObject.transform);
             } else
@@ -61,7 +56,15 @@ public class SceneLoadVolume : MonoBehaviour
         }
     }
 
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            interactable = true;
+        }
+    }
+
     private void OnTriggerExit(Collider other) {
         canvas.gameObject.SetActive(false);
+        interactable = false;
     }
 }
