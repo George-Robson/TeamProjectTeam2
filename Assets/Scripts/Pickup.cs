@@ -12,9 +12,10 @@ public class Pickup : MonoBehaviour
     private Camera cam;
     private RaycastHit hit;
     private bool interactable = false;
+    private GameObject key;
 
     private void Start() {
-        
+        key = GameObject.Find("Player").transform.GetChild(2).gameObject;
         gameManager = GameObject.Find("Game Manager").transform.GetComponent<GameManager>();
         if (gameManager.FindState(givesCondition))
             Destroy(gameObject);
@@ -32,6 +33,7 @@ public class Pickup : MonoBehaviour
             {
                 Debug.Log("interact");
                 gameManager.SetGameState(givesCondition, true);
+                key.SetActive(true);
                 Destroy(gameObject);
             }
         }

@@ -983,6 +983,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1572791282, guid: 3ecf0a39ba753b9438382422f033ae60, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.226
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572791282, guid: 3ecf0a39ba753b9438382422f033ae60, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.193
+      objectReference: {fileID: 0}
     - target: {fileID: 3047747425053346920, guid: 3ecf0a39ba753b9438382422f033ae60, type: 3}
       propertyPath: fadeTime
       value: 50
@@ -993,7 +1001,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3047747425053346920, guid: 3ecf0a39ba753b9438382422f033ae60, type: 3}
       propertyPath: sceneToLoad
-      value: MagesHouse
+      value: Throne_Room
       objectReference: {fileID: 0}
     - target: {fileID: 3047747425053346920, guid: 3ecf0a39ba753b9438382422f033ae60, type: 3}
       propertyPath: scenesToLoad.Array.size
@@ -1069,15 +1077,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3047747426132332052, guid: 3ecf0a39ba753b9438382422f033ae60, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 32.701
+      value: -97.863
       objectReference: {fileID: 0}
     - target: {fileID: 3047747426132332052, guid: 3ecf0a39ba753b9438382422f033ae60, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 115.92
+      value: 1.66
       objectReference: {fileID: 0}
     - target: {fileID: 3047747426132332052, guid: 3ecf0a39ba753b9438382422f033ae60, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.043
+      value: 135.893
       objectReference: {fileID: 0}
     - target: {fileID: 3047747426132332052, guid: 3ecf0a39ba753b9438382422f033ae60, type: 3}
       propertyPath: m_LocalRotation.w
