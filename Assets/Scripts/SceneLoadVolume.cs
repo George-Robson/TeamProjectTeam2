@@ -16,11 +16,13 @@ public class SceneLoadVolume : MonoBehaviour
     public bool requiresInteract;
     public Canvas canvas;
     private Camera cam;
+    private GameManager gameManager;
 
     private void Start() {
         blackScreen = GameObject.Find("Black Screen").GetComponent<Animator>();
         canvas.gameObject.SetActive(false);
         cam = GameObject.Find("Player").transform.GetChild(0).GetComponent<Camera>();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     void OnDrawGizmos() {
@@ -36,7 +38,7 @@ public class SceneLoadVolume : MonoBehaviour
 
     private void OnTriggerStay(Collider other) {
         // Debug.Log("Collision with " + other.transform.name);
-        if (requiresCondition && !GameObject.Find("Game Manager").GetComponent<GameManager>().FindState(condition))
+        if (requiresCondition && !gameManager.FindState(condition))
             return;
         if (other.CompareTag("Player") && other.GetComponent<canChangeLevel>().getCanChangeLevel())
         {
@@ -50,7 +52,6 @@ public class SceneLoadVolume : MonoBehaviour
                 } 
                 canvas.gameObject.SetActive(true);
                 canvas.transform.LookAt(cam.gameObject.transform);
-                return;
             } else
             {
                 blackScreen.Play("FadeScreenOut");
