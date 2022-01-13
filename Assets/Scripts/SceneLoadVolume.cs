@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneLoadVolume : MonoBehaviour
 {
@@ -13,16 +14,10 @@ public class SceneLoadVolume : MonoBehaviour
     public bool disableWireframeGizmos;
     public bool requiresCondition;
     public string condition;
-    public bool requiresInteract;
-    public Canvas canvas;
-    private Camera cam;
     private GameManager gameManager;
-    private bool interactable = false;
 
     private void Start() {
         blackScreen = GameObject.Find("Black Screen").GetComponent<Animator>();
-        canvas.gameObject.SetActive(false);
-        cam = GameObject.Find("Player").transform.GetChild(0).GetComponent<Camera>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
@@ -43,28 +38,10 @@ public class SceneLoadVolume : MonoBehaviour
             return;
         if (other.CompareTag("Player") && other.GetComponent<canChangeLevel>().getCanChangeLevel())
         {
-            if (interactable)
-            {
-                canvas.gameObject.SetActive(true);
-                canvas.transform.LookAt(cam.gameObject.transform);
-            } else
-            {
-                blackScreen.Play("FadeScreenOut");
-                sceneController.LoadScene(sceneToLoad);
-                other.transform.SetPositionAndRotation(playerTeleportPosition.transform.position, playerTeleportPosition.transform.rotation);
-            }
+            blackScreen.Play("FadeScreenOut");
+            UnityEngine.SceneManagement.SceneManager.LoadScene(sceneToLoad); 
+            other.transform.SetPositionAndRotation(playerTeleportPosition.transform.position, playerTeleportPosition.transform.rotation);
+            
         }
-    }
-
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            interactable = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other) {
-        canvas.gameObject.SetActive(false);
-        interactable = false;
     }
 }

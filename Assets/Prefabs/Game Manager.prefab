@@ -45,11 +45,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conditions:
-  - HasKey
+  - SwordFix
   - BookFix
   - BookDown
-  - SwordFix
+  - HasKey
   - LuteFix
+  - GemFix
 --- !u!114 &3737584350972641744
 MonoBehaviour:
   m_ObjectHideFlags: 0

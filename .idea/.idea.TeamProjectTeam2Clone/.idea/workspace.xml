@@ -6,7 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="7413bd09-9a5c-497f-adf6-0a92f2626ae3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TeamProjectTeam2Clone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TeamProjectTeam2Clone/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interact.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interact.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Game Manager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Game Manager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Scene Load Volume.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Scene Load Volume.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MagesHouse.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MagesHouse.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/StreetSceneBackup.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/StreetSceneBackup.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Tavern.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Tavern.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestSceneStart.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestSceneStart.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Throne_Room.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Throne_Room.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SceneLoadVolume.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SceneLoadVolume.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +80,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1642091022467</updated>
-      <workItem from="1642091025308" duration="6017000" />
+      <workItem from="1642091025308" duration="6883000" />
+      <workItem from="1642112434238" duration="1248000" />
     </task>
     <servers />
   </component>

@@ -10625,7 +10625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8743df17e8a2d44cbcf9d605deee399, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoadOnPlay: TestSceneStart
+  sceneToLoadOnPlay: StreetStart
   mainMenu: {fileID: 1696203648}
   credits: {fileID: 78435501}
 --- !u!1 &1593650680 stripped
@@ -14965,7 +14965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 909081e8a009abe4ab269e3299b5b1c1, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 130b6de21e9d6bf4ca349247b0021fe1, type: 2}
   isGlobal: 1
   blendDistance: 0
   weight: 1

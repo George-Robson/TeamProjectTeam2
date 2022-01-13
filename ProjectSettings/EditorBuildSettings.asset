@@ -15,18 +15,18 @@ EditorBuildSettings:
     path: Assets/Scenes/TestScene.unity
     guid: 955c5483fe6b3404a8d0ea8237756bd1
   - enabled: 1
+    path: Assets/Scenes/Street.unity
+    guid: a83f6403d0628544ba090a53f8959b61
+  - enabled: 1
     path: Assets/Scenes/Tavern.unity
     guid: 3d54700be811e36438bed51a0d6c9ebe
   - enabled: 1
-    path: Assets/Scenes/TestEnvironment.unity
-    guid: da37d87ebf2f3a3468fe68bf58378c06
-  - enabled: 1
-    path: Assets/Scenes/Cube.unity
-    guid: 83a2056bc40060f48af6f5e7d9441790
-  - enabled: 1
-    path: Assets/Scenes/EndCredits.unity
-    guid: d17e4d54627e38b49a14413a98cdff1e
-  - enabled: 1
     path: Assets/Scenes/Throne_Room.unity
     guid: 30be38a4fa1c06e40a9198c109c17e83
+  - enabled: 1
+    path: Assets/Scenes/MagesHouse.unity
+    guid: 0945dfabf60d07749aa1368852f4a506
+  - enabled: 1
+    path: Assets/Scenes/StreetStart.unity
+    guid: 388b8b99fcd478c48971ee1f0eb3c946
   m_configObjects: {}
