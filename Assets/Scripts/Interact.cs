@@ -59,7 +59,7 @@ public class Interact : MonoBehaviour {
             originalObjectMR = gameObj.transform.GetChild(2).transform.rotation;
             originalObjectMS = gameObj.transform.GetChild(2).transform.localScale;
             pickedObjectM = gameObj.transform.GetChild(2).transform;
-            pickedObjectM.GetComponent<MeshCollider>().enabled = false;
+            pickedObjectM.GetComponent<Collider>().enabled = false;
           }
         }
       }
@@ -87,10 +87,9 @@ public class Interact : MonoBehaviour {
         pickedObjectR.localScale = Vector3.MoveTowards(pickedObjectR.localScale, new Vector3(originalObjectRS.x * ratio, originalObjectRS.y * ratio, originalObjectRS.z * ratio), Time.deltaTime * pickupDamping * 25);
 
         if (pickedObjectL.position == targetLocationL &&
-            pickedObjectR.position == targetLocationR &&
-            pickedObjectL.rotation == Quaternion.LookRotation(transform.position - pickedObjectL.transform.position) &&
-            pickedObjectR.rotation == Quaternion.LookRotation(transform.position - pickedObjectR.transform.position)
+            pickedObjectR.position == targetLocationR
             ) {
+              print("picked");
           objectPickupState = PickupState.Picked;
         }
 
@@ -112,7 +111,7 @@ public class Interact : MonoBehaviour {
               pickedObjectR.rotation == originalObjectRR && pickedObjectR.position == originalObjectRP &&
               pickedObjectM.localScale == originalObjectMS) {
             objectPickupState = PickupState.Placed;
-            pickedObjectM.GetComponent<MeshCollider>().enabled = true;
+            pickedObjectM.GetComponent<Collider>().enabled = true;
           }
 
           break;
@@ -143,9 +142,9 @@ public class Interact : MonoBehaviour {
           pickedObjectL.position = Vector3.MoveTowards(pickedObjectL.position, targetLocation, Time.deltaTime * pickupDamping);
           pickedObjectR.position = Vector3.MoveTowards(pickedObjectR.position, targetLocation, Time.deltaTime * pickupDamping);
 
-          pickedObjectL.localScale = Vector3.MoveTowards(pickedObjectL.localScale, Vector3.zero, Time.deltaTime * pickupDamping * 50);
-          pickedObjectR.localScale = Vector3.MoveTowards(pickedObjectR.localScale, Vector3.zero, Time.deltaTime * pickupDamping * 50);
-          pickedObjectM.localScale = Vector3.MoveTowards(pickedObjectM.localScale, originalObjectLS, Time.deltaTime * pickupDamping * 50);
+          pickedObjectL.localScale = Vector3.MoveTowards(pickedObjectL.localScale, Vector3.zero, Time.deltaTime * pickupDamping * originalObjectLS.x / 2);
+          pickedObjectR.localScale = Vector3.MoveTowards(pickedObjectR.localScale, Vector3.zero, Time.deltaTime * pickupDamping * originalObjectLS.x / 2);
+          pickedObjectM.localScale = Vector3.MoveTowards(pickedObjectM.localScale, originalObjectLS, Time.deltaTime * pickupDamping * originalObjectLS.x / 2);
 
 				if(pickedObjectL.localScale == Vector3.zero && pickedObjectR.localScale == Vector3.zero){
           originalObjectMS = originalObjectLS;
