@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class AudioVolume : MonoBehaviour
 {
+    public TextMeshProUGUI textMeshProUGUI;
     private AudioSource audioSource;
     public AudioClip audioClip;
     private GameObject subtitleBackground;
@@ -13,7 +14,6 @@ public class AudioVolume : MonoBehaviour
     public bool onlyPlaysOnce;
     private bool hasPlayed = false;
     private GameManager gameManager;
-    private TextMeshProUGUI textMeshProUGUI;
     public bool requiresCC = true;
     public float cC1Duration = 1f;
     public float cC2Duration = 1f;
@@ -27,6 +27,8 @@ public class AudioVolume : MonoBehaviour
     [SerializeField, TextArea] public string closedCaption5;
     private float startTime = 0;
     private bool triggered = false;
+    private Transform UILocation;
+    private bool UISpawned;
 
     void Start()
     {
@@ -34,7 +36,7 @@ public class AudioVolume : MonoBehaviour
         canChangeLevel = GameObject.Find("Player").GetComponent<canChangeLevel>();
         audioSource = GameObject.Find("Player").transform.GetChild(0).GetComponent<AudioSource>();
         gameManager = GameObject.Find("Game Manager").transform.GetComponent<GameManager>();
-        textMeshProUGUI = GameObject.Find("UI Canvas").transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+        UILocation = GameObject.Find("UI Canvas").transform;
     }
 
     private void Update() {
@@ -50,6 +52,9 @@ public class AudioVolume : MonoBehaviour
     }
 
     void ShowCC() {
+        CreateText();
+        UISpawned = true;
+        textMeshProUGUI.gameObject.SetActive(true);
         canChangeLevel.setCanChangeLevel(false);
         subtitleBackground.SetActive(true);
         if (startTime < cC1Duration)
@@ -65,14 +70,20 @@ public class AudioVolume : MonoBehaviour
         else
         {
             textMeshProUGUI.text = "";
+            textMeshProUGUI.gameObject.SetActive(false);
             canChangeLevel.setCanChangeLevel(true);
             subtitleBackground.SetActive(false);
             return;
         }
         startTime += Time.deltaTime;
     }
+
+    private void CreateText() {
+        if (!UISpawned)
+            textMeshProUGUI = Instantiate(textMeshProUGUI, UILocation);
+    }
     
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (requiresCondition && !gameManager.FindState(condition))
             return;
