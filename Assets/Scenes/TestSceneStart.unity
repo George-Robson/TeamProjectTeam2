@@ -219,6 +219,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &820639679 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 305842838791075042, guid: 65655e659dd5c4a488707b090ea0d811, type: 3}
+  m_PrefabInstance: {fileID: 305842838739697375}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &820639683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820639679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1386042afebc36a4d80330b308500477, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip: {fileID: 8300000, guid: 779b380fb3512304aa081e97536054f0, type: 3}
+  volume: 1
+  requiresCondition: 0
+  condition: 
+  onlyPlaysOnce: 1
+  requiresCC: 1
+  cC1Duration: 2
+  cC2Duration: 0
+  cC3Duration: 0
+  cC4Duration: 0
+  cC5Duration: 0
+  closedCaption1: '[Magic sound plays]'
+  closedCaption2: 
+  closedCaption3: 
+  closedCaption4: 
+  closedCaption5: 
 --- !u!1001 &1030272009
 PrefabInstance:
   m_ObjectHideFlags: 0
