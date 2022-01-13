@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SceneLoadVolume : MonoBehaviour
@@ -9,13 +10,17 @@ public class SceneLoadVolume : MonoBehaviour
     public GameObject playerTeleportPosition;
     private readonly SceneController sceneController = new SceneController();
     private Animator blackScreen;
-    public float fadeSpeed = 0.0001f;
     public bool disableWireframeGizmos;
     public bool requiresCondition;
     public string condition;
+    public bool requiresInteract;
+    public Canvas canvas;
+    private Camera cam;
 
     private void Start() {
         blackScreen = GameObject.Find("Black Screen").GetComponent<Animator>();
+        canvas.gameObject.SetActive(false);
+        cam = GameObject.Find("Player").transform.GetChild(0).GetComponent<Camera>();
     }
 
     void OnDrawGizmos() {
@@ -29,15 +34,33 @@ public class SceneLoadVolume : MonoBehaviour
         } 
     }
 
-    private void OnTriggerEnter(Collider other) {
+    private void OnTriggerStay(Collider other) {
         // Debug.Log("Collision with " + other.transform.name);
         if (requiresCondition && !GameObject.Find("Game Manager").GetComponent<GameManager>().FindState(condition))
             return;
         if (other.CompareTag("Player") && other.GetComponent<canChangeLevel>().getCanChangeLevel())
         {
-            blackScreen.Play("FadeScreenOut");
-            sceneController.LoadScene(sceneToLoad);
-            other.transform.SetPositionAndRotation(playerTeleportPosition.transform.position, playerTeleportPosition.transform.rotation);
+            if (requiresInteract)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    blackScreen.Play("FadeScreenOut");
+                    sceneController.LoadScene(sceneToLoad);
+                    other.transform.SetPositionAndRotation(playerTeleportPosition.transform.position, playerTeleportPosition.transform.rotation);
+                } 
+                canvas.gameObject.SetActive(true);
+                canvas.transform.LookAt(cam.gameObject.transform);
+                return;
+            } else
+            {
+                blackScreen.Play("FadeScreenOut");
+                sceneController.LoadScene(sceneToLoad);
+                other.transform.SetPositionAndRotation(playerTeleportPosition.transform.position, playerTeleportPosition.transform.rotation);
+            }
         }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        canvas.gameObject.SetActive(false);
     }
 }
