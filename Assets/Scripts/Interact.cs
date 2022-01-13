@@ -19,15 +19,18 @@ public class Interact : MonoBehaviour {
   Vector3 originalObjectLP, originalObjectRP, originalObjectMP; //position
   Vector3 originalObjectLS, originalObjectRS, originalObjectMS; //scale
   float sensitivity;
+  float amount = 0.5F;
   Transform gameObj;
   bool showText = false;
-
+  
   private void Start() {
     sensitivity = GetComponentInParent<PlayerMovement>().MouseSensitivity;
   }
 
   void Update() {
     Ray ray = GetComponent<Camera>().ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+    Ray rayL = GetComponent<Camera>().ScreenPointToRay(new Vector3(Screen.width / 3 * 2, Screen.height / 2, 0));
+    Ray rayR = GetComponent<Camera>().ScreenPointToRay(new Vector3(Screen.width / 3, Screen.height / 2, 0));
 
     if (objectPickupState != PickupState.Placed) {
       if (Input.GetButtonDown("Interact")) {
@@ -63,33 +66,35 @@ public class Interact : MonoBehaviour {
 
     switch (objectPickupState) {
       case PickupState.Picking: {
-          //Move in front of camera
-          float amount = 0.5F;
-          Vector3 targetLocation = transform.position + ray.direction * inspectDistance;
-          pickedObjectL.position = Vector3.MoveTowards(pickedObjectL.position, targetLocation - pickedObjectL.right * amount, Time.deltaTime * pickupDamping);
-          pickedObjectR.position = Vector3.MoveTowards(pickedObjectR.position, targetLocation + pickedObjectR.right * amount, Time.deltaTime * pickupDamping);
-          pickedObjectM.position = Vector3.MoveTowards(pickedObjectM.position, targetLocation, Time.deltaTime * pickupDamping);
+        //Move in front of camera
+        Vector3 targetLocation = transform.position + ray.direction * inspectDistance;
+        Vector3 targetLocationL = transform.position + rayL.direction * inspectDistance;
+        Vector3 targetLocationR = transform.position + rayR.direction * inspectDistance;
+        
+        pickedObjectL.position = Vector3.MoveTowards(pickedObjectL.position, targetLocationL, Time.deltaTime * pickupDamping);
+        pickedObjectR.position = Vector3.MoveTowards(pickedObjectR.position, targetLocationR, Time.deltaTime * pickupDamping);
+        pickedObjectM.position = Vector3.MoveTowards(pickedObjectM.position, targetLocation, Time.deltaTime * pickupDamping);
 
-          //Rotate to face the camera
-          pickedObjectL.rotation = Quaternion.Slerp(pickedObjectL.rotation, Quaternion.LookRotation(transform.position - pickedObjectL.transform.position), Time.deltaTime * pickupDamping);
-          pickedObjectR.rotation = Quaternion.Slerp(pickedObjectR.rotation, Quaternion.LookRotation(transform.position - pickedObjectR.transform.position), Time.deltaTime * pickupDamping);
+        //Rotate to face the camera
+        pickedObjectL.rotation = Quaternion.Slerp(pickedObjectL.rotation, Quaternion.LookRotation(transform.position - pickedObjectL.transform.position), Time.deltaTime * pickupDamping);
+        pickedObjectR.rotation = Quaternion.Slerp(pickedObjectR.rotation, Quaternion.LookRotation(transform.position - pickedObjectR.transform.position), Time.deltaTime * pickupDamping);
 
-          //Scale
-          // float ratio = inspectDistance / raycastDistance;
-          float ratio = 1F;
-          pickedObjectL.localScale = Vector3.MoveTowards(pickedObjectL.localScale, new Vector3(originalObjectLS.x * ratio, originalObjectLS.y * ratio, originalObjectLS.z * ratio), Time.deltaTime * pickupDamping * 25);
-          pickedObjectR.localScale = Vector3.MoveTowards(pickedObjectR.localScale, new Vector3(originalObjectRS.x * ratio, originalObjectRS.y * ratio, originalObjectRS.z * ratio), Time.deltaTime * pickupDamping * 25);
+        //Scale
+        // float ratio = inspectDistance / raycastDistance;
+        float ratio = 1F;
+        pickedObjectL.localScale = Vector3.MoveTowards(pickedObjectL.localScale, new Vector3(originalObjectLS.x * ratio, originalObjectLS.y * ratio, originalObjectLS.z * ratio), Time.deltaTime * pickupDamping * 25);
+        pickedObjectR.localScale = Vector3.MoveTowards(pickedObjectR.localScale, new Vector3(originalObjectRS.x * ratio, originalObjectRS.y * ratio, originalObjectRS.z * ratio), Time.deltaTime * pickupDamping * 25);
 
-          if (pickedObjectL.position == targetLocation - pickedObjectL.right * amount &&
-              pickedObjectR.position == targetLocation + pickedObjectR.right * amount &&
-              pickedObjectL.rotation == Quaternion.LookRotation(transform.position - pickedObjectL.transform.position) &&
-              pickedObjectR.rotation == Quaternion.LookRotation(transform.position - pickedObjectR.transform.position)
-              ) {
-            objectPickupState = PickupState.Picked;
-          }
-
-          break;
+        if (pickedObjectL.position == targetLocationL &&
+            pickedObjectR.position == targetLocationR &&
+            pickedObjectL.rotation == Quaternion.LookRotation(transform.position - pickedObjectL.transform.position) &&
+            pickedObjectR.rotation == Quaternion.LookRotation(transform.position - pickedObjectR.transform.position)
+            ) {
+          objectPickupState = PickupState.Picked;
         }
+
+        break;
+      }
       case PickupState.Placing: {
           pickedObjectL.position = Vector3.MoveTowards(pickedObjectL.position, originalObjectLP, Time.deltaTime * pickupDamping);
           pickedObjectR.position = Vector3.MoveTowards(pickedObjectR.position, originalObjectRP, Time.deltaTime * pickupDamping);
