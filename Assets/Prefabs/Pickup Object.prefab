@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1921297914238824424}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.91, y: 1.44, z: -5.76}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1921297915068150343}
   m_Father: {fileID: 0}
@@ -42,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1921297914238824424}
-  m_Mesh: {fileID: 973877516759717424, guid: 9abc99bafe41ff44eb940a9500c9e1ad, type: 3}
+  m_Mesh: {fileID: -5448518418904112508, guid: 5e2e09f31fd681146b42c52117025554, type: 3}
 --- !u!23 &1921297914238824437
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 64a437c7c0d320d4f98a026644757e5c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,8 +96,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 11.231955, y: 11.231955, z: 11.231955}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.744728, y: 3.116999, z: 2.6825867}
+  m_Center: {x: -0.47430038, y: 0.9812254, z: -0.055892944}
 --- !u!114 &1921297914238824439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactUI: {fileID: 1921297915377663335}
-  givesCondition: hasKey
+  givesCondition: HasKey
 --- !u!1 &1921297915068150200
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,17 +138,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1921297915068150200}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0.014}
   m_LocalScale: {x: 0.03, y: 0.03, z: 0.39}
   m_Children:
   - {fileID: 1921297915377663333}
   m_Father: {fileID: 1921297914238824435}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.02, y: 0.86}
+  m_AnchoredPosition: {x: -0.78, y: 0.01}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1921297915068150340
