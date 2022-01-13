@@ -1001,7 +1001,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3047747425053346920, guid: 3ecf0a39ba753b9438382422f033ae60, type: 3}
       propertyPath: sceneToLoad
-      value: StreetSceneBackup
+      value: Throne_Room
       objectReference: {fileID: 0}
     - target: {fileID: 3047747425053346920, guid: 3ecf0a39ba753b9438382422f033ae60, type: 3}
       propertyPath: requiresInteract
@@ -1081,15 +1081,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3047747426132332052, guid: 3ecf0a39ba753b9438382422f033ae60, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.21
+      value: -97.61
       objectReference: {fileID: 0}
     - target: {fileID: 3047747426132332052, guid: 3ecf0a39ba753b9438382422f033ae60, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 109.12
+      value: 2.0273523
       objectReference: {fileID: 0}
     - target: {fileID: 3047747426132332052, guid: 3ecf0a39ba753b9438382422f033ae60, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -50.51
+      value: 138.1
       objectReference: {fileID: 0}
     - target: {fileID: 3047747426132332052, guid: 3ecf0a39ba753b9438382422f033ae60, type: 3}
       propertyPath: m_LocalRotation.w
