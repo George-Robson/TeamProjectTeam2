@@ -112,6 +112,11 @@ public class Interact : MonoBehaviour {
               pickedObjectM.localScale == originalObjectMS) {
             objectPickupState = PickupState.Placed;
             pickedObjectM.GetComponent<Collider>().enabled = true;
+            if (pickedObjectM.localScale == originalObjectLS)
+            { 
+              GameManager gm = GameObject.Find("Game Manager").transform.GetComponent<GameManager>();
+              gm.SetGameState(gameObj.GetComponent<Condition>().placedCondition, true); 
+            }
           }
 
           break;
@@ -174,9 +179,9 @@ public class Interact : MonoBehaviour {
             //If you interact, you place it down
             objectPickupState = PickupState.Placing;
             
-            print(gameObj.GetComponent<Condition>().condition);
+            print(gameObj.GetComponent<Condition>().fixedCondition);
             GameManager gm = GameObject.Find("Game Manager").transform.GetComponent<GameManager>();
-            gm.SetGameState(gameObj.GetComponent<Condition>().condition, true);
+            gm.SetGameState(gameObj.GetComponent<Condition>().fixedCondition, true);
           }
         }
         

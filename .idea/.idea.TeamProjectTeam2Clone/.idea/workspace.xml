@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7413bd09-9a5c-497f-adf6-0a92f2626ae3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TeamProjectTeam2Clone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TeamProjectTeam2Clone/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KeyUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KeyUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI Canvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI Canvas.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Throne_Room.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Throne_Room.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pickup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SceneLoadVolume.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SceneLoadVolume.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Condition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Condition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interact.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interact.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +71,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1642091022467</updated>
-      <workItem from="1642091025308" duration="2547000" />
+      <workItem from="1642091025308" duration="3467000" />
     </task>
     <servers />
   </component>
