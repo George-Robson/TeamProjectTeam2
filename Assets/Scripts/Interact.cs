@@ -6,55 +6,46 @@ public class Interact : MonoBehaviour
   public float inspectDistance = 1F;
   public float pickupDamping = 2;
   public float alignment = 0.95F;
+  [Range(0f, 1f)] public float positionThreshold = 0.5F;
 
-  [HideInInspector]
-  public enum PickupState { Picked, Picking, Placing, Placed, Combining, Observing }
-  [HideInInspector]
-  public PickupState objectPickupState = PickupState.Placed;
+  [HideInInspector] public enum PickupState { Picked, Picking, Placing, Placed, Combining, Observing }
+  [HideInInspector] public PickupState objectPickupState = PickupState.Placed;
 
   RaycastHit hit;
   Transform pickedObjectL, pickedObjectR, pickedObjectM;
   Quaternion originalObjectLR, originalObjectRR, originalObjectMR; //rotation
   Vector3 originalObjectLP, originalObjectRP, originalObjectMP; //position
-  Vector3 originalObjectLS, originalObjectRS, originalObjectMS; //scale
+  Vector3 originalObjectLS, originalObjectRS, originalObjectMS, OLS; //scale
   float sensitivity;
-  float amount = 0.5F;
   Transform gameObj;
   bool showText = false;
 
-  private void Start()
-  {
+  private void Start() {
     sensitivity = GetComponentInParent<PlayerMovement>().MouseSensitivity;
   }
 
-  void Update()
-  {
+  void Update() {
     Ray ray = GetComponent<Camera>().ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
     Ray rayL = GetComponent<Camera>().ScreenPointToRay(new Vector3(Screen.width / 3 * 2, Screen.height / 2, 0));
     Ray rayR = GetComponent<Camera>().ScreenPointToRay(new Vector3(Screen.width / 3, Screen.height / 2, 0));
 
-    if (objectPickupState != PickupState.Placed && objectPickupState != PickupState.Combining)
-    {
-      if (Input.GetButtonDown("Interact"))
-      {
+    if (objectPickupState != PickupState.Placed && objectPickupState != PickupState.Combining) {
+      if (Input.GetButtonDown("Interact")) {
         objectPickupState = PickupState.Placing;
       }
     }
-    if (Physics.Raycast(ray, out hit, raycastDistance))
-    {
-      if (hit.transform.parent && hit.transform.parent.tag == "Interactible" && hit.transform.tag != "Gem")
-      {
+    if (Physics.Raycast(ray, out hit, raycastDistance)) {
+      if (hit.transform.parent && hit.transform.parent.tag == "Interactible" && hit.transform.tag != "Gem") {
         gameObj = hit.transform.parent.transform;
 
-        if (Input.GetButtonDown("Interact"))
-        {
-          if (objectPickupState == PickupState.Placed)
-          {
+        if (Input.GetButtonDown("Interact")) {
+          if (objectPickupState == PickupState.Placed) {
             objectPickupState = PickupState.Picking;
 
             originalObjectLP = gameObj.transform.GetChild(0).transform.position;
             originalObjectLR = gameObj.transform.GetChild(0).transform.rotation;
             originalObjectLS = gameObj.transform.GetChild(0).transform.localScale;
+            OLS = gameObj.transform.GetChild(0).transform.localScale;
             pickedObjectL = gameObj.transform.GetChild(0).transform;
 
             originalObjectRP = gameObj.transform.GetChild(1).transform.position;
@@ -72,10 +63,8 @@ public class Interact : MonoBehaviour
       }
     }
 
-    switch (objectPickupState)
-    {
-      case PickupState.Picking:
-        {
+    switch (objectPickupState) {
+      case PickupState.Picking: {
           //Move in front of camera
           Vector3 targetLocation = transform.position + ray.direction * inspectDistance;
           Vector3 targetLocationL = transform.position + rayL.direction * inspectDistance;
@@ -95,18 +84,16 @@ public class Interact : MonoBehaviour
           pickedObjectL.localScale = Vector3.MoveTowards(pickedObjectL.localScale, new Vector3(originalObjectLS.x * ratio, originalObjectLS.y * ratio, originalObjectLS.z * ratio), Time.deltaTime * pickupDamping * 25);
           pickedObjectR.localScale = Vector3.MoveTowards(pickedObjectR.localScale, new Vector3(originalObjectRS.x * ratio, originalObjectRS.y * ratio, originalObjectRS.z * ratio), Time.deltaTime * pickupDamping * 25);
 
-          if (pickedObjectL.position == targetLocationL &&
-              pickedObjectR.position == targetLocationR
-              )
-          {
+          if (ApproximateVector(pickedObjectL.position, targetLocationL, positionThreshold) &&
+              ApproximateVector(pickedObjectR.position, targetLocationR, positionThreshold)
+              ) {
             print("picked");
             objectPickupState = PickupState.Picked;
           }
 
           break;
         }
-      case PickupState.Placing:
-        {
+      case PickupState.Placing: {
           pickedObjectL.position = Vector3.MoveTowards(pickedObjectL.position, originalObjectLP, Time.deltaTime * pickupDamping);
           pickedObjectR.position = Vector3.MoveTowards(pickedObjectR.position, originalObjectRP, Time.deltaTime * pickupDamping);
           pickedObjectM.position = Vector3.MoveTowards(pickedObjectM.position, originalObjectMP, Time.deltaTime * pickupDamping);
@@ -118,27 +105,29 @@ public class Interact : MonoBehaviour
           pickedObjectL.localScale = Vector3.Lerp(pickedObjectL.localScale, originalObjectLS, Time.deltaTime * pickupDamping * 10);
           pickedObjectR.localScale = Vector3.Lerp(pickedObjectR.localScale, originalObjectRS, Time.deltaTime * pickupDamping * 10);
 
-          if (pickedObjectL.rotation == originalObjectLR && pickedObjectL.position == originalObjectLP &&
-              pickedObjectR.rotation == originalObjectRR && pickedObjectR.position == originalObjectRP &&
-              pickedObjectM.localScale == originalObjectMS)
-          {
+          if (ApproximateQuaternion(pickedObjectL.rotation, originalObjectLR, positionThreshold) &&
+              ApproximateVector(pickedObjectL.position, originalObjectLP, positionThreshold) &&
+              ApproximateQuaternion(pickedObjectR.rotation, originalObjectRR, positionThreshold) && 
+              ApproximateVector(pickedObjectR.position, originalObjectRP, positionThreshold) &&
+              ApproximateVector(pickedObjectM.localScale, originalObjectMS, positionThreshold)) {
             objectPickupState = PickupState.Placed;
             pickedObjectM.GetComponent<Collider>().enabled = true;
+
+            if(ApproximateVector(pickedObjectM.localScale, OLS, positionThreshold)){
+              print("big");
+            } else print("small");
           }
 
           break;
         }
-      case PickupState.Picked:
-        {
-          if (Input.GetKey(KeyCode.A))
-          {
+      case PickupState.Picked: {
+          if (Input.GetKey(KeyCode.A)) {
             float rotationX = Input.GetAxis("Mouse X") * sensitivity;
             float rotationY = Input.GetAxis("Mouse Y") * sensitivity;
 
             pickedObjectR.transform.Rotate(new Vector3(-rotationY, -rotationX, 0), Space.Self);
           }
-          else if (Input.GetKey(KeyCode.D))
-          {
+          else if (Input.GetKey(KeyCode.D)) {
             float rotationX = Input.GetAxis("Mouse X") * sensitivity;
             float rotationY = Input.GetAxis("Mouse Y") * sensitivity;
 
@@ -147,20 +136,17 @@ public class Interact : MonoBehaviour
 
           if (Vector3.Dot(pickedObjectL.transform.forward, pickedObjectR.transform.forward) > alignment &&
               Vector3.Dot(pickedObjectL.transform.right, transform.forward) > alignment
-          )
-          {
+          ) {
             objectPickupState = PickupState.Combining;
           }
 
-          if (Input.GetKeyDown(KeyCode.Q))
-          {
+          if (Input.GetKeyDown(KeyCode.Q)) {
             objectPickupState = PickupState.Combining;
           }
 
           break;
         }
-      case PickupState.Combining:
-        {
+      case PickupState.Combining: {
           Vector3 targetLocation = transform.position + ray.direction * inspectDistance;
           pickedObjectL.position = Vector3.MoveTowards(pickedObjectL.position, targetLocation, Time.deltaTime * pickupDamping);
           pickedObjectR.position = Vector3.MoveTowards(pickedObjectR.position, targetLocation, Time.deltaTime * pickupDamping);
@@ -171,8 +157,7 @@ public class Interact : MonoBehaviour
 
           gameObj.GetComponent<Condition>().ObjectFixed();
 
-          if (pickedObjectL.localScale == Vector3.zero && pickedObjectR.localScale == Vector3.zero)
-          {
+          if (ApproximateVector(pickedObjectL.localScale, Vector3.zero, positionThreshold) && ApproximateVector(pickedObjectR.localScale, Vector3.zero, positionThreshold)) {
             originalObjectMS = originalObjectLS;
             originalObjectLS = Vector3.zero;
             originalObjectRS = Vector3.zero;
@@ -180,28 +165,23 @@ public class Interact : MonoBehaviour
           }
           break;
         }
-      case PickupState.Observing:
-        {
-          if (Input.GetKeyDown(KeyCode.R))
-          {
+      case PickupState.Observing: {
+          if (Input.GetKeyDown(KeyCode.R)) {
             //Toggle text with R
             showText = !showText;
           }
 
-          if (showText)
-          {
+          if (showText) {
             //Text being shown
           }
-          else
-          {
+          else {
             //No text, but there is rotation
             float rotationX = Input.GetAxis("Mouse X") * sensitivity;
             float rotationY = Input.GetAxis("Mouse Y") * sensitivity;
 
             pickedObjectM.transform.Rotate(new Vector3(-rotationY, -rotationX, 0), Space.Self);
 
-            if (Input.GetButtonDown("Interact"))
-            {
+            if (Input.GetButtonDown("Interact")) {
               //If you interact, you place it down
               objectPickupState = PickupState.Placing;
               gameObj.GetComponent<Condition>().ObjectPlaced();
@@ -213,5 +193,29 @@ public class Interact : MonoBehaviour
         }
       default: break;
     }
+  }
+
+  bool ApproximateVector(Vector3 v1, Vector3 v2, float amount){
+    if(Mathf.Abs(v1.x - v2.x) < amount){
+      if(Mathf.Abs(v1.y - v2.y) < amount){
+        if(Mathf.Abs(v1.z - v2.z) < amount){
+          return true;
+        }
+      }
+    }
+
+    return false;
+  }
+
+  bool ApproximateQuaternion(Quaternion q1, Quaternion q2, float amount){
+    if(Mathf.Abs(q1.x - q2.x) < amount){
+      if(Mathf.Abs(q1.y - q2.y) < amount){
+        if(Mathf.Abs(q1.z - q2.z) < amount){
+          return true;
+        }
+      }
+    }
+
+    return false;
   }
 }
