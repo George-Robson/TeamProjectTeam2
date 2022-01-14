@@ -29,6 +29,7 @@ public class AudioVolume : MonoBehaviour
     private bool triggered = false;
     private Transform UILocation;
     private bool UISpawned = false;
+    private MuteNQuit mute;
 
     void Start()
     {
@@ -37,6 +38,7 @@ public class AudioVolume : MonoBehaviour
         audioSource = GameObject.Find("Player").transform.GetChild(0).GetComponent<AudioSource>();
         gameManager = GameObject.Find("Game Manager").transform.GetComponent<GameManager>();
         UILocation = GameObject.Find("UI Canvas").transform;
+        mute = GameObject.Find("Player").GetComponent<MuteNQuit>();
     }
 
     private void Update() {
@@ -89,6 +91,12 @@ public class AudioVolume : MonoBehaviour
             return;
         if (onlyPlaysOnce && hasPlayed)
             return;
+        if (mute.muted)
+        {
+            canChangeLevel.setCanChangeLevel((true));
+            return;
+        }
+            
         if (other.CompareTag("Player") && audioClip != null)
         {
             audioSource.PlayOneShot(audioClip, volume);

@@ -45,9 +45,12 @@ public class GameManager : MonoBehaviour
         foreach (var state in gameStateList)
         {
             if (state.gameStateString == condition)
+            {
                 state.gameStateBool = boolean;
-            Debug.Log(state.gameStateBool);
-            return;
+                Debug.Log(state.gameStateBool);    
+                return;
+            }
+            
         }
     }
 }
