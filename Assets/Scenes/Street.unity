@@ -1152,6 +1152,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Interactable_Sword (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4577890116896799534, guid: b169000db8aebe54fbc507cce00bd2fa, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577890116896799534, guid: b169000db8aebe54fbc507cce00bd2fa, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577890116896799534, guid: b169000db8aebe54fbc507cce00bd2fa, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b169000db8aebe54fbc507cce00bd2fa, type: 3}
 --- !u!1 &152921081 stripped
