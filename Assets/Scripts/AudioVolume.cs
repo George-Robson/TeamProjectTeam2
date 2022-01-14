@@ -92,7 +92,11 @@ public class AudioVolume : MonoBehaviour
         if (onlyPlaysOnce && hasPlayed)
             return;
         if (mute.muted)
+        {
+            canChangeLevel.setCanChangeLevel((true));
             return;
+        }
+            
         if (other.CompareTag("Player") && audioClip != null)
         {
             audioSource.PlayOneShot(audioClip, volume);
