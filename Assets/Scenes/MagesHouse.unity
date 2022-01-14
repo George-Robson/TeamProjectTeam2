@@ -8173,6 +8173,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1728820300312058484, guid: 55cd581bbea946f4587a94f65bb933f5, type: 3}
+      propertyPath: alignment
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1728820300312058484, guid: 55cd581bbea946f4587a94f65bb933f5, type: 3}
       propertyPath: raycastDistance
       value: 2
       objectReference: {fileID: 0}
