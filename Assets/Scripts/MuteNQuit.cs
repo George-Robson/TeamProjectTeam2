@@ -24,7 +24,6 @@ public class MuteNQuit : MonoBehaviour
         {
             if (!muted)
             {
-                AudioListener.volume = 0;
                 foreach (var textMeshProUGUI in FindObjectsOfType<TextMeshProUGUI>())
                 {
                     Destroy(textMeshProUGUI.gameObject);
@@ -33,7 +32,6 @@ public class MuteNQuit : MonoBehaviour
             }
             if (muted)
             {
-                AudioListener.volume = 1;
             }
             muted = !muted;
         }
