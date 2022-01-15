@@ -35,5 +35,12 @@ public class MuteNQuit : MonoBehaviour
             }
             muted = !muted;
         }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            SceneManager.LoadScene("EndCredits");
+            Destroy(GameObject.Find("UI Canvas"));
+            Destroy(GameObject.Find("Player"));
+            Destroy(GameObject.Find("Game Manager"));
+        }
     }
 }

@@ -29,4 +29,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StreetStart.unity
     guid: 388b8b99fcd478c48971ee1f0eb3c946
+  - enabled: 1
+    path: Assets/Scenes/Street 1.unity
+    guid: d3feda553b48c3d4390b392ae381b8a2
+  - enabled: 1
+    path: Assets/Scenes/Spawn.unity
+    guid: 1dbdf0736564f654bacfd1b1d0371bef
+  - enabled: 1
+    path: Assets/Scenes/EndCredits.unity
+    guid: d17e4d54627e38b49a14413a98cdff1e
   m_configObjects: {}

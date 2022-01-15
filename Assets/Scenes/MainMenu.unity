@@ -10625,7 +10625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8743df17e8a2d44cbcf9d605deee399, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoadOnPlay: StreetStart
+  sceneToLoadOnPlay: Spawn
   mainMenu: {fileID: 1696203648}
   credits: {fileID: 78435501}
 --- !u!1 &1593650680 stripped

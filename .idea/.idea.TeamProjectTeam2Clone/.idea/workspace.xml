@@ -6,9 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="7413bd09-9a5c-497f-adf6-0a92f2626ae3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TeamProjectTeam2Clone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TeamProjectTeam2Clone/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/StreetStart.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/StreetStart.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI Canvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI Canvas.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MagesHouse.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MagesHouse.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MagesHouse/LightingData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MagesHouse/LightingData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Street.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Street.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Tavern.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Tavern.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Tavern/LightingData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Tavern/LightingData.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Throne_Room.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Throne_Room.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Throne_Room/LightingData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Throne_Room/LightingData.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/MuteNQuit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MuteNQuit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +84,7 @@
       <option name="presentableId" value="Default" />
       <updated>1642091022467</updated>
       <workItem from="1642091025308" duration="6883000" />
-      <workItem from="1642112434238" duration="5757000" />
+      <workItem from="1642112434238" duration="8671000" />
     </task>
     <servers />
   </component>
